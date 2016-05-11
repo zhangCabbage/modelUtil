@@ -8,6 +8,7 @@ import java.util.Map;
 
 /**
  * 全排列的问题，递归思想的完全体现！！！
+ * 参见：[【字符串全排列算法】](http://blog.csdn.net/wzy_1988/article/details/8939140)
  * @author zhang_zack
  * 
  */

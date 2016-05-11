@@ -9,8 +9,8 @@ package zhang.algorithm.modelUtil;
  * 相应的2位数(1-99)中出现1的次数为a(2)，则a(2)也不难求出a(2)=19 <br/>
  * 那么可以推导出：当n>=2时，a(n) = 10*a(n-1)+9*10^(n-2) <br/>
  * <br/>
- * 编程之美系列之三——计算1的个数
- * http://www.cnblogs.com/jy02414216/archive/2011/03/09/1977724.html
+ * 参见：[【编程之美系列之三——计算1的个数】](http://www.cnblogs.com/jy02414216/archive/2011/03/09/1977724.html)
+ * 
  * @author zhang_zack
  *
  */
