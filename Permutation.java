@@ -1,19 +1,24 @@
 package zhang.algorithm.modelUtil;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 /**
- * 全排列的问题，递归思想的完全体现！！！
- * 参见：[【字符串全排列算法】](http://blog.csdn.net/wzy_1988/article/details/8939140)
+ * (Permutation)全排列问题，递归思想的完全体现！！！
+ * 参见：
+ * [【字符串全排列算法】](http://blog.csdn.net/wzy_1988/article/details/8939140)
+ * [【STL系列之十 全排列(百度迅雷笔试题)】](http://blog.csdn.net/morewindows/article/details/7370155)  给出了非递归的全排列方法
  * @author zhang_zack
  * 
  */
 public class Permutation {
 	private Map<String, Integer> map = new HashMap<String, Integer>();
+	private int m;
+	public int numCount;//用作记录全排列的个数
 	/**
 	 * 通常解法
 	 * 1、采用递归的方式，没有限制的列出所有可能情况 <br/>
@@ -31,6 +36,7 @@ public class Permutation {
 		for(int i=0; i<str.length(); i++){
 			list.add(str.substring(i, i+1));
 		}
+		numCount = 0;
 		listAll(list, "", str.length());
 	}
 	
@@ -43,6 +49,7 @@ public class Permutation {
 		if(prefix.length() == len && !map.containsKey(prefix)){
 //			System.out.println(prefix);
 			map.put(prefix, 1);
+			numCount++;
 		}
 		
 		for(int i=0; i<list.size(); i++){
@@ -55,22 +62,28 @@ public class Permutation {
 	
 	/**
 	 * 2、同样是采用递归的方法进行全排列，只不过这里没有多使用额外的空间，并且没有使用集合 <br/>
+	 * <br/>
+	 * arrange递归方法中end始终是strChar.length-1，如果是在单独类中可以把它提取为成员变量<br/>
+	 * <strong>值得注意的是：</strong>在递归中其实操作的都是同一个char[]类型的c，因为是一个个递归所以虽然操作的都是同一个，但是不会出现问题！！！
+	 * 这里是基于交换的思想 <br/>
 	 * 
 	 * @param str
 	 */
 	public void recursion2(String str){
 		char[] strChar = str.toCharArray();
-		arrange(strChar, 0, strChar.length-1);
+		numCount = 0;
+		arrange2(strChar, 0, strChar.length-1);
 	}
 	
-	public void arrange(char[] c, int start, int end){
+	public void arrange2(char[] c, int start, int end){
 		if(start == end){
 //			System.out.println(new String(c));
+			numCount++;
 		}else{
 			for(int i=start; i<=end; i++){
 				if(isSwap(c, start, i)){
 					swap(c, start, i);
-					arrange(c, start+1, end);
+					arrange2(c, start+1, end);
 					swap(c, i, start);
 				}
 			}
@@ -101,18 +114,122 @@ public class Permutation {
 		return flag;
 	}
 	
+//--------------------------------------------------------------------------------------------------------------------
+	/**
+	 * 3、表示从str这么多字符中，选出m个做全排列。当m=str.length()时，就是上面全排列的情况<br/>
+	 * <br/>
+	 * 我的想法：每次取出m个数，然后进行全排列，但是我自己感觉没法很好的把这个程序写出来<br/>
+	 * 还是采用交换的思想[【定义一个数组，编程打印它的全排列】](http://blog.csdn.net/sunbingxi_/article/details/6125426)
+	 * 
+	 * @param str
+	 * @param m
+	 */
+	public void recursion3(String str, int m){
+		char[] strChar = str.toCharArray();
+		if(strChar.length<m){
+			m = strChar.length;
+		}
+		numCount = 0;
+		this.m = m;
+		arrange3(strChar, 0, m);
+	}
+	/**
+	 * 
+	 * @param c 
+	 * @param i 
+	 * @param count 表示还需要循环打印的字符数
+	 */
+	private void arrange3(char[] c, int start, int count) {
+		if(count == 0){
+			//打印
+//			print(c);
+			numCount++;
+		}else{
+			for(int i=start; i<c.length; i++){
+				if(isSwap(c, start, i)){
+					swap(c, start, i);
+					arrange3(c, start+1, count-1);
+					swap(c, i, start);
+				}
+			}
+		}
+	}
+	private void print(char[] c) {
+		System.out.println(new String(c).substring(0, m));
+	}
+
+//--------------------------------------------------------------------------------------------------------------------
+	/**
+	 * 4、采用非递归的方法完成全排列，也就是循环的方法啰！！！ <br/>
+	 * 我们该思考如何才能不使用递归，又能得到下一个排序呢。<br/>
+	 * 递归则是不管初始状态的循环交换两个数就好，那不使用递归呢？<br/>
+	 * <br/>
+	 * 首先把待遍历的数据使用快排进行排序 <br/>
+	 * 然后从后往前，找到第一个顺序前后数对，如34126543中的26，2即为替换数a <br/>
+	 * 然后从后往前，找到第一个比替换数a大的最小数，很容易知道a之后的数据都是倒序，所以从后往前找第一个比a大的，即比a大的最小数b。<br/>
+	 * 然后交换此两个数a、b，根据上面的道理我们知道：交换之后a之后的仍为倒序 <br/>
+	 * 最后，把a之后的倒序倒置一遍，即变换为顺序。并返回true <br/>
+	 * <br/>相当巧妙！！！
+	 * @param str
+	 */
+	public void nonRecursion4(String str){
+		numCount = 0;
+		char[] strChar = str.toCharArray();
+		Arrays.sort(strChar);//先使用快速排序
+		do{
+			//打印
+			numCount++;
+			System.out.println(strChar);
+		}while(hasNextPermutation(strChar));
+	}
+	public boolean hasNextPermutation(char[] c){
+		int swapIndex = c.length;
+		while(swapIndex>1){
+			swapIndex--;
+			//从后往前，找到第一个顺序前后数对
+			if(c[swapIndex-1] < c[swapIndex]){
+				int curIndex = c.length-1;
+				//从后向前找比替换点大的第一个数
+				while(c[curIndex]<=c[swapIndex-1]){
+					curIndex--;
+				}
+				swap(c, swapIndex-1, curIndex);
+				reverse(c, swapIndex, c.length-1);
+				return true;
+			}
+		}
+		reverse(c, swapIndex-1, c.length-1);
+		return false;
+	}
+	public void reverse(char[] c, int start, int end){
+		int len = end-start+1;
+		for(int i=0; i<len/2; i++){
+			char temp = c[start+i];
+			c[start+i] = c[end-i];
+			c[end-i] = temp;
+		}
+	}
+	
+	/**
+	 * 总的测试程序
+	 * @param args
+	 */
 	public static void main(String[] args){
 		Permutation test = new Permutation();
-		long start1 = System.currentTimeMillis();
-		test.recursion1("122323544");
-		long end1 = System.currentTimeMillis();
-		System.out.println("使用map用时----> "+(end1-start1)+"ms");
+		String str = "122323544";
+		String str2 = "12345";
+		String str3 = "122";
 		
-		System.out.println("-------------------------------------");
+		long start1 = System.currentTimeMillis();
+		test.recursion1(str);
+		long end1 = System.currentTimeMillis();
+		System.out.println("总共"+test.numCount+"种可能！使用map用时----> "+(end1-start1)+"ms");
+		System.out.println("---                                     ---");
+		
 		long start2 = System.currentTimeMillis();
-		test.recursion2("122323544");
+		test.recursion2(str);
 		long end2 = System.currentTimeMillis();
-		System.out.println("自身逻辑解决重复问题用时----> "+(end2-start2)+"ms");
+		System.out.println("总共"+test.numCount+"种可能！自身逻辑解决重复问题用时----> "+(end2-start2)+"ms");
 		
 //		从以下运行结果可以看出两者巨大的耗时差异！！
 //		当str = "122323544"时
@@ -120,5 +237,19 @@ public class Permutation {
 //		-------------------------------------
 //		自身逻辑解决重复问题用时----> 2ms
 		
+		System.out.println();
+		System.out.println("-------------------------------------------从str中选择m个进行全排列");
+		System.out.println();
+		
+		long start3 = System.currentTimeMillis();
+		test.recursion3(str3, 2);
+		long end3 = System.currentTimeMillis();
+		System.out.println("总共"+test.numCount+"种可能！耗时----> "+(end3-start3)+"ms");
+		System.out.println("---                                     ---");
+		
+		long start4 = System.currentTimeMillis();
+		test.nonRecursion4(str2);
+		long end4 = System.currentTimeMillis();
+		System.out.println("总共"+test.numCount+"种可能！耗时----> "+(end4-start4)+"ms");
 	}
 }

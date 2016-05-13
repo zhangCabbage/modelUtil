@@ -9,7 +9,7 @@ import java.util.Arrays;
  */
 public class MergeSort {
 	/**
-	 * 具体采用递归的方式实现归并排序
+	 * 方法一：具体采用递归的方式实现归并排序
 	 * @param corArr
 	 * @param arr
 	 * @param start
