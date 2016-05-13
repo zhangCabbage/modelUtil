@@ -8,10 +8,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * (Permutation)全排列问题，递归思想的完全体现！！！
- * 参见：
- * [【字符串全排列算法】](http://blog.csdn.net/wzy_1988/article/details/8939140)
- * [【STL系列之十 全排列(百度迅雷笔试题)】](http://blog.csdn.net/morewindows/article/details/7370155)  给出了非递归的全排列方法
+ * (Permutation)全排列问题，递归思想的完全体现！！！<br/>
+ * 参见：<br/>
+ * [【字符串全排列算法】](http://blog.csdn.net/wzy_1988/article/details/8939140) <br/>
+ * [【STL系列之十 全排列(百度迅雷笔试题)】](http://blog.csdn.net/morewindows/article/details/7370155)  给出了非递归的全排列方法 <br/>
+ * [【全排列和全组合实现】](http://wuchong.me/blog/2014/07/28/permutation-and-combination-realize/) 这里总结了关于组合的求法！<br/>
+ * 
  * @author zhang_zack
  * 
  */
@@ -84,7 +86,7 @@ public class Permutation {
 				if(isSwap(c, start, i)){
 					swap(c, start, i);
 					arrange2(c, start+1, end);
-					swap(c, i, start);
+					swap(c, i, start);//这里一定要记得重新调转回来！！！！！
 				}
 			}
 		}
@@ -142,12 +144,12 @@ public class Permutation {
 	private void arrange3(char[] c, int start, int count) {
 		if(count == 0){
 			//打印
-//			print(c);
+			print(c);
 			numCount++;
 		}else{
 			for(int i=start; i<c.length; i++){
 				if(isSwap(c, start, i)){
-					swap(c, start, i);
+					swap(c, start, i);//后面的每个数都有机会做老大
 					arrange3(c, start+1, count-1);
 					swap(c, i, start);
 				}
@@ -179,7 +181,7 @@ public class Permutation {
 		do{
 			//打印
 			numCount++;
-			System.out.println(strChar);
+//			System.out.println(strChar);
 		}while(hasNextPermutation(strChar));
 	}
 	public boolean hasNextPermutation(char[] c){
@@ -242,13 +244,13 @@ public class Permutation {
 		System.out.println();
 		
 		long start3 = System.currentTimeMillis();
-		test.recursion3(str3, 2);
+		test.recursion3(str2, 2);
 		long end3 = System.currentTimeMillis();
 		System.out.println("总共"+test.numCount+"种可能！耗时----> "+(end3-start3)+"ms");
 		System.out.println("---                                     ---");
 		
 		long start4 = System.currentTimeMillis();
-		test.nonRecursion4(str2);
+		test.nonRecursion4(str);
 		long end4 = System.currentTimeMillis();
 		System.out.println("总共"+test.numCount+"种可能！耗时----> "+(end4-start4)+"ms");
 	}
