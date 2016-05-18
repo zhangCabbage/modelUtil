@@ -1,7 +1,8 @@
 package zhang.algorithm.modelUtil;
 
 /**
- * 约瑟环问题的解决
+ * 约瑟环问题的解决 <br/>
+ * 约瑟环问题最大的特点就是：前后状态可以相互迭代推导，下标之间的转换，从而可以导出每次淘汰人的下标之间的递推公式 <br/>
  * @author zhang_zack
  * 
  */
@@ -30,9 +31,11 @@ public class JosephRing {
 		return finalWinner+1;
 	}
 	
+//--------------------------------------------------------------------------------------------------------------------
+	
 	/**
 	 * 问题二：有n个好人，n个坏人，找出n个坏人的排法，使得优先把所有坏人给pass掉<br/>
-	 * 暴力法解决问题,O(n*m)
+	 * 暴力法解决问题,O(n*m)复杂度，没有什么可以参考的价值
 	 * @param n
 	 * @param m
 	 */
@@ -62,18 +65,50 @@ public class JosephRing {
 			}
 		}
 	}
+
+//--------------------------------------------------------------------------------------------------------------------
+	
 	/**
 	 * 问题三：2n个人围成一圈，前n个人为好人，后n个人为坏人
 	 * 从第一个人开始报数，报数报到m时，该人退出此圈
 	 * 现要求确定一个最小m的值使得所有坏人在任意一个好人之前全部出圈。题目来源:【HDU1443_Joseph_约瑟环】<br/>
 	 * <br/>
-	 * 
-	 * @param n 0<n<14
+	 * [【HDU1443_Joseph_约瑟环】](http://www.cnblogs.com/cchun/archive/2012/02/14/2520224.html)<br/>
+	 * @param n 0< n <14
 	 * @param m 
 	 * @return
 	 */
-	public static int findMinM2KillAllBad(int n, int m){
-		return 0;
+	public static int[] findMinM2KillAllBad(int n, int m){
+		int[] res = new int[14];
+		for(int i=1; i<14; i++){
+			for(int j=1; ; j++){
+				if(isKillAllBad(i, j)){
+					res[i] = j;
+					break;
+				}
+			}
+		}
+		return res;
+	}
+	/**
+	 * 前k个为好人，后k个为坏人
+	 * @param k
+	 * @param m
+	 * @return
+	 */
+	private static boolean isKillAllBad(int k, int m) {
+		int start = 0;//好人起始位置
+		int end = k-1;//好人结束位置
+		int kill;//当前要杀的人位置
+		for(int n = 2*k; n>0; n--){
+			kill = (m-1)%n;
+			if(kill>=start && kill<=end){
+				return false;
+			}
+			start = ((start-m)%n+n)%n;
+			end = ((end-m)%n+n)%n;
+		}
+		return true;
 	}
 	
 	public static void main(String[] args){
