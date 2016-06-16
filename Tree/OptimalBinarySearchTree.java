@@ -115,7 +115,6 @@ public class OptimalBinarySearchTree {
         return root;
     }
 
-
     public static void main(String[] args) {
         double[] p = {-1, 0.15, 0.1, 0.05, 0.1, 0.2};
         double[] q = {0.05, 0.1, 0.05, 0.05, 0.05, 0.1};
