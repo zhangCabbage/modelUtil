@@ -104,10 +104,10 @@ public class BinaryTree {
      * how to print binary tree in grace way?<br/>
      * first we solve a more simple scene that we assume all node value is single digit.<br/>
      * what style we want to print is like below:<br/>
-     * 1
-     * 2       3
-     * 4   5
-     * 6 7   8
+     * -------1
+     * ---2       3
+     * -----4   5
+     * ----6 7   8
      * every node space its child leaf width:2^depth-1<br/>
      */
     public void printTree(TreeNode root, int curLevel, StringBuffer[] sb) {
@@ -133,8 +133,10 @@ public class BinaryTree {
         sb[curLevel].append(" ");
     }
 
+    //----------------------------------------------------------------------------
     //next is all kinds of common tree traversal methods
     //1、preOrder、inOrder、postOrder in recursive way
+    //----------------------------------------------------------------------------
 
     /**
      * traversal tree in preorder way
@@ -221,20 +223,19 @@ public class BinaryTree {
     }
 
     /**
-     *
      * @return
      */
-    public String inOrder2(){
+    public String inOrder2() {
         TreeNode curNode = this.getRoot();
         Stack<TreeNode> stack = new Stack<TreeNode>();
         StringBuffer sb = new StringBuffer();
 
-        while(curNode!=null || !stack.isEmpty()){
-            while(curNode!=null){
+        while (curNode != null || !stack.isEmpty()) {
+            while (curNode != null) {
                 stack.push(curNode);
                 curNode = curNode.left;
             }
-            if(!stack.isEmpty()){
+            if (!stack.isEmpty()) {
                 curNode = stack.pop();
                 sb.append(curNode.val);
                 curNode = curNode.right;
@@ -245,12 +246,121 @@ public class BinaryTree {
     }
 
     /**
+     * this way that first put right node second put left node,
+     * we don't need to do with the structure of Treenode.
      *
      * @return
      */
-    public String postOrder2(){
+    public String postOrder2() {
         StringBuffer sb = new StringBuffer();
+        if (root == null) {
+            return sb.toString();
+        }
 
+        TreeNode curNode = this.getRoot();
+        TreeNode preNode = null;
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        stack.push(curNode);
+        while (!stack.isEmpty()) {
+            curNode = stack.peek();
+            if ((curNode.left == null && curNode.right == null) ||
+                    (preNode != null && (curNode.left == preNode || curNode.right == preNode))) {
+                sb.append(curNode.val);
+                preNode = stack.pop();
+            } else {
+                if (curNode.right != null) {
+                    stack.push(curNode.right);
+                }
+                if (curNode.left != null) {
+                    stack.push(curNode.left);
+                }
+            }
+        }
+
+        return sb.toString();
+    }
+
+    /**
+     * this way we need add a attribute to every node that use to sign is this node visit twice.
+     * every time when first visit one node we set the visit attribute isFirst as true
+     * along left child tree until is null, current time use the isFirst attribute to see
+     * whether to pop the top one to truely visit!
+     * <p>
+     * here we do not realize
+     * reference:[【二叉树的非递归遍历】](http://www.cnblogs.com/dolphin0520/archive/2011/08/25/2153720.html)
+     *
+     * @return
+     */
+    public String postOrder3() {
+        StringBuffer sb = new StringBuffer();
+        boolean isFirst = false;
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+
+
+        return sb.toString();
+    }
+
+    //----------------------------------------------------------------------------
+    //next we realize two very important traversal way : BFS and DFS
+    //----------------------------------------------------------------------------
+
+    /**
+     * breadth first traversal with the help of queue
+     *
+     * @return
+     */
+    public String BFSTraversal() {
+        StringBuffer sb = new StringBuffer();
+        if (this.getRoot() == null) {
+            return sb.toString();
+        }
+
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.offer(this.getRoot());
+
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode curNode = queue.poll();
+                sb.append(curNode.val);
+                if (curNode.left != null) {
+                    queue.offer(curNode.left);
+                }
+                if (curNode.right != null) {
+                    queue.offer(curNode.right);
+                }
+            }
+        }
+
+        return sb.toString();
+    }
+
+    /**
+     * depth first traversal
+     * with the result of test we can easy know that depth-firt-traversal is the same with
+     * pre-order.
+     *
+     * without doubt it can be run if the below DFS traversal code is same with preOrder that not recursive
+     * but here we use other way to realize this DFS.
+     * @return
+     */
+    public String DFSTraversal() {
+        StringBuffer sb = new StringBuffer();
+        if(this.getRoot()==null){
+            return sb.toString();
+        }
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        stack.push(this.getRoot());
+        while(!stack.isEmpty()){
+            TreeNode curNode = stack.pop();
+            sb.append(curNode.val);
+            if(curNode.right!=null){
+                stack.push(curNode.right);
+            }
+            if(curNode.left!=null){
+                stack.push(curNode.left);
+            }
+        }
         return sb.toString();
     }
 
@@ -260,12 +370,20 @@ public class BinaryTree {
         int[] nums = {1, 2, 3, -1, 4, 5, -1, 6, 7, -1, 8};
         binaryTree.setRoot(nums);
         System.out.println(binaryTree);
+
+        System.out.println("--------------------three common traversal----------------------");
         System.out.println("PreOrder1 traversal --> " + binaryTree.preOrder1());
         System.out.println("InOrder1 traversal --> " + binaryTree.inOrder1());
         System.out.println("PostOrder1 traversal --> " + binaryTree.postOrder1());
         System.out.println();
         System.out.println("PreOrder2 traversal --> " + binaryTree.preOrder2());
         System.out.println("InOrder2 traversal --> " + binaryTree.inOrder2());
-//        System.out.println("PostOrder2 traversal --> " + binaryTree.postOrder2());
+        System.out.println("PostOrder2 traversal --> " + binaryTree.postOrder2());
+        System.out.println("--------------------three common traversal----------------------");
+        System.out.println();
+        System.out.println("--------------------BFS|DFS traversal----------------------");
+        System.out.println("BFS --> " + binaryTree.BFSTraversal());
+        System.out.println("DFS --> " + binaryTree.DFSTraversal());
+        System.out.println("--------------------BFS|DFS traversal----------------------");
     }
 }
