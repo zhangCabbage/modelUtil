@@ -6,7 +6,7 @@ import java.util.Stack;
 
 /**
  * Created by zhang_zack on 16/6/16.
- * build common binary tree
+ * build common binary tree, still need to generalization(泛化)
  */
 public class BinaryTree {
     private TreeNode root = null;//树的根节点
