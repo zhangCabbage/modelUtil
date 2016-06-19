@@ -17,7 +17,11 @@ public class BinaryTree {
     }
 
     public void setRoot(int[] nums) {
-        this.root = BinaryTree.constructTree(nums);
+        this.constructTree(nums);
+    }
+
+    public void setRoot(TreeNode root){
+        this.root = root;
     }
 
     /**
@@ -49,14 +53,24 @@ public class BinaryTree {
     }
 
     /**
+     *
+     * @param nums
+     * @return
+     */
+    public static BinaryTree instance(int[] nums){
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.constructTree(nums);
+        return binaryTree;
+    }
+
+    /**
      * use a int array to construct a binary tree in order to verify the use of binary tree<br/>
      *
      * @param nums here we define if the value of int array is -1, so its respective treeNode is null
-     * @return
      */
-    public static TreeNode constructTree(int[] nums) {
+    public void constructTree(int[] nums) {
         if (nums.length < 1) {
-            return null;
+            return;
         }
 
         Queue<TreeNode> queue = new LinkedList<TreeNode>();
@@ -81,7 +95,17 @@ public class BinaryTree {
                 i++;
             }
         }
-        return root;
+        this.setRoot(root);
+    }
+
+    /**
+     * print the tree
+     */
+    public void print(){
+        String[] res = this.getClass().getCanonicalName().split("\\.");
+        System.out.println("--------"+res[res.length-1]+" start--------");
+        System.out.println(this);
+        System.out.println("--------"+res[res.length-1]+" end--------");
     }
 
     @Override
@@ -365,11 +389,10 @@ public class BinaryTree {
     }
 
     public static void main(String[] args) {
-        BinaryTree binaryTree = new BinaryTree();
 //        int[] nums = {1, 2, 3, -1, -1, 4, -1, 5, 6, -1, -1, 7, 8, -1, -1, 9};
         int[] nums = {1, 2, 3, -1, 4, 5, -1, 6, 7, -1, 8};
-        binaryTree.setRoot(nums);
-        System.out.println(binaryTree);
+        BinaryTree binaryTree = BinaryTree.instance(nums);
+        binaryTree.print();
 
         System.out.println("--------------------three common traversal----------------------");
         System.out.println("PreOrder1 traversal --> " + binaryTree.preOrder1());
