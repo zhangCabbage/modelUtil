@@ -337,7 +337,7 @@ public class BinaryTree {
 
     /**
      * depth first traversal
-     * with the result of test we can easy know that depth-firt-traversal is the same with
+     * with the result of test we can easy to know that depth-firt-traversal is the same with
      * pre-order.
      *
      * without doubt it can be run if the below DFS traversal code is same with preOrder that not recursive
