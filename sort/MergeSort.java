@@ -4,6 +4,16 @@ import java.util.Arrays;
 
 /**
  * 归并排序的实现
+ *
+ *
+ * 时间复杂度分析(采用递推公式的方法进行分析)：
+ * T(n) = 2T(n-1) + 2^(n-1)
+ *
+ * 时间复杂度分析：
+ * 最好：O(nlogn)
+ * 最坏：O(nlogn)
+ * 平均：O(nlogn)
+ *
  * @author zhang_zack
  *
  */

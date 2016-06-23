@@ -2,6 +2,12 @@ package zhang.algorithm.modelUtil.sort;
 
 import zhang.algorithm.modelUtil.ZhangUtil;
 
+/**
+ * 时间复杂度分析：
+ * 最好：比较 n-1 次，O(nlogn)
+ * 最坏：比较 n(n-1)/2 次，O(n^2)
+ * 平均：O(nlogn)
+ */
 public class FastSort {
 	/**
 	 * 快速排序算法

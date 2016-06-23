@@ -3,7 +3,12 @@ package zhang.algorithm.modelUtil.sort;
 import zhang.algorithm.modelUtil.ZhangUtil;
 
 /**
- * 冒泡排序的实现
+ * 交换排序，通过交换相邻项，直至有序。其中典型的实现是冒泡排序
+ *
+ * 时间复杂度分析：
+ * 最好：比较 n-1 次，O(n)
+ * 最坏：比较 n(n-1)/2 次，O(n^2)
+ * 平均：O(n^2)
  * @author zhang_zack
  *
  */
