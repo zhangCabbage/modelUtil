@@ -1,4 +1,4 @@
-package zhang.algorithm.modelUtil;
+package zhang.algorithm.modelUtil.NumberTheory;
 
 /**
  * 求两个数的最大公约数 (Greatest Common Divisor)

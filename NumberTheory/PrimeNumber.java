@@ -1,4 +1,4 @@
-package zhang.algorithm.modelUtil;
+package zhang.algorithm.modelUtil.NumberTheory;
 
 import java.util.Arrays;
 

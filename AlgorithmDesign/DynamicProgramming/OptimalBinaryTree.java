@@ -1,4 +1,4 @@
-package zhang.algorithm.modelUtil.Tree;
+package zhang.algorithm.modelUtil.AlgorithmDesign.DynamicProgramming;
 
 import zhang.algorithm.modelUtil.ZhangUtil;
 

@@ -1,4 +1,4 @@
-package zhang.algorithm.modelUtil;
+package zhang.algorithm.modelUtil.NumberTheory;
 
 /**
  * (Combination)组合问题<br/>

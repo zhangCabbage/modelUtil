@@ -1,4 +1,4 @@
-package zhang.algorithm.modelUtil;
+package zhang.algorithm.modelUtil.NumberTheory;
 
 /**
  * 约瑟环问题的解决 <br/>
