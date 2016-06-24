@@ -9,5 +9,5 @@ package zhang.algorithm.modelUtil.AlgorithmDesign.SearchStrategy;
  */
 public class TSP {
 
-    
+
 }

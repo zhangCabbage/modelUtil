@@ -24,13 +24,27 @@ public class ZhangUtil {
         System.out.println("-----matrix start-----");
         for(int i=0; i<matrix.length; i++){
             for(int j=0; j<matrix[0].length; j++){
-                System.out.print(matrix[i][j]);
+                System.out.print(matrix[i][j] +" ");
             }
             System.out.println();
         }
         System.out.println("-----matrix end-----");
     }
 
+    /**
+     * 输出整数型矩阵
+     * @param matrix
+     */
+    public static void printIntMatrix(double[][] matrix){
+        System.out.println("-----matrix start-----");
+        for(int i=0; i<matrix.length; i++){
+            for(int j=0; j<matrix[0].length; j++){
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println("-----matrix end-----");
+    }
     /**
      * 交换数组中两个数
      */

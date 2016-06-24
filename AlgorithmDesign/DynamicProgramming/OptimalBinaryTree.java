@@ -19,6 +19,46 @@ import zhang.algorithm.modelUtil.ZhangUtil;
  */
 public class OptimalBinaryTree {
     /**
+     * only arrays we can find in this optimal binary tree, more easy to thought
+     * the sum of p is 1
+     * @param p
+     * @param num
+     * @return how we should to use this root array
+     */
+    public static int[][] optimalBST(double[] p, int num){
+        double[][] e = new double[num+2][num+2];
+        double[][] w = new double[num+1][num+1];
+        //this will to easy count the sum of w from i to j
+        //so use w[i][j] = w[i][j-1] + p[j]
+        //therefor the size of w is also need num+1
+
+        int[][] root = new int[num+1][num+1];//记录根节点
+        //root[i][j] -- 用来存放i-j组成的最优二叉查找树的根节点
+
+        for(int d = 0; d<num; d++){
+            for(int i=1; i<=num-d; i++){
+                int j = i + d;
+                e[i][j] = Double.MAX_VALUE;
+                w[i][j] = w[i][j-1] + p[j-1];//
+                for(int k=i; k<=j; k++){
+                    double temp = w[i][j] + e[i][k-1] + e[k+1][j];;
+                    if(temp < e[i][j]){
+                        e[i][j] = temp;
+                        root[i][j] = k;
+                    }
+                }
+            }
+        }
+        ZhangUtil.printIntMatrix(w);
+        System.out.println("the total search probability of this optimal BST is "+ e[1][num]);
+        return root;
+    }
+
+    //----------------------------------------------------------------------------------
+    //Consider the failure of success
+    //----------------------------------------------------------------------------------
+
+    /**
      * Time complexity is O(n^3)<br/>
      * @param p key probability, size is num
      * @param q virtual key(can find key) probability, size is num+1
@@ -29,6 +69,9 @@ public class OptimalBinaryTree {
         double[][] w = new double[num+2][num+2];//子树总概率
         //why e and w is two bigger than num?
         //because when i==j, e[i][i-1] + e[i+1][j] + w[i][j];
+        //when i = 1 or j = num, so e[1][0]、e[num+1][num]
+        //here w can use the size of num+1, but in order not to so much complexity in init to judge i
+        //so add a bigger w is look good!
 
         int[][] root = new int[num+1][num+1];//记录根节点
         //root[i][j] -- 用来存放i-j组成的最优二叉查找树的根节点
@@ -55,7 +98,6 @@ public class OptimalBinaryTree {
                         System.out.println("i--> "+i+", j--> "+j);
                         root[i][j] = k;
                     }
-
                 }
             }
         }
@@ -94,6 +136,8 @@ public class OptimalBinaryTree {
                 w[i][j] = w[i][j-1] + p[j] + q[j];//
 
                 //because of root[i][j-1] <= root[i][j] <= root[i+1][j]
+                //so why?
+                //
                 //进行优化!!!
                 if(i == j){
                     root[i][j] = i;
@@ -121,5 +165,10 @@ public class OptimalBinaryTree {
         int num = 5;
         ZhangUtil.printIntMatrix(OptimalBinaryTree.optimalBST(p, q, num));
         ZhangUtil.printIntMatrix(OptimalBinaryTree.optimalBST2(p, q, num));
+
+
+        double[] p1 = {0.3, 0.05, 0.08, 0.45, 0.12};
+        int num1 = 5;
+        System.out.println(OptimalBinaryTree.optimalBST(p1, num1));
     }
 }
