@@ -45,8 +45,21 @@ public class FastSort {
 		}
 	}
 
+	/**
+	 * 快速排序算法的简单实现方法
+	 * @param nums
+	 * @param low
+	 * @param high
+     */
+	public static void fastSort2(int[] nums, int low, int high){
+		int l = low;
+		int h = high;
+		int povitKey = nums[l];
+
+	}
+
 	public static void main(String[] args) {
-		int[] nums = {1, 3, 2};
+		int[] nums = {3, 2, 1};
 		fastSort(nums, 0, nums.length-1);
 		ZhangUtil.printArray(nums);
 	}
