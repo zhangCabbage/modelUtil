@@ -18,7 +18,7 @@ public class BinarySearch {
             return -1;
         }
         while(start <= end){
-            int mid = (start+end)/2;
+            int mid = (start+end)>>1;
             if(target < nums[mid]){
                 end = mid-1;
             }else if(target > nums[mid]){
