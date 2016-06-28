@@ -1,4 +1,4 @@
-package zhang.algorithm.modelUtil.search;
+package zhang.algorithm.modelUtil.Search;
 
 /**
  * Created by zhang_zack on 16/5/29.

@@ -1,4 +1,4 @@
-package zhang.algorithm.modelUtil.search;
+package zhang.algorithm.modelUtil.Search;
 
 /**
  * Created by IntelliJ IDEA.
@@ -6,7 +6,7 @@ package zhang.algorithm.modelUtil.search;
  * Date: 2016/6/27
  * Time: 19:10
  * To change this template use File | Settings | File Templates.
- * This class is to realize special search.
+ * This class is to realize special Search.
  */
 public class SpecialSearch {
     public int min;
@@ -56,6 +56,14 @@ public class SpecialSearch {
                 min = array[l];
             }
         }
+    }
+
+    /**
+     * 采用分治法的思想来编码
+     * @param array
+     */
+    public void findMaxAndMin2(int[] array){
+
     }
 
 

@@ -1,4 +1,4 @@
-package zhang.algorithm.modelUtil.sort;
+package zhang.algorithm.modelUtil.Sort;
 
 /**
  * Created by IntelliJ IDEA.

@@ -23,7 +23,7 @@ public class BinarySearchTree extends BinaryTree {
     }
 
     /**
-     * insert of binary search tree<br/>
+     * insert of binary Search tree<br/>
      * <p>
      * this method reference other mind
      * if num is the same as the value of node in tree, we do not insert to tree.
@@ -55,7 +55,7 @@ public class BinarySearchTree extends BinaryTree {
     }
 
     /**
-     * search of binary search tree<br/>
+     * Search of binary Search tree<br/>
      *
      * @param num
      * @return

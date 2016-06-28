@@ -1,4 +1,4 @@
-package zhang.algorithm.modelUtil.sort;
+package zhang.algorithm.modelUtil.Sort;
 
 /**
  * Created by IntelliJ IDEA.
@@ -7,7 +7,7 @@ package zhang.algorithm.modelUtil.sort;
  * Time: 20:35
  * To change this template use File | Settings | File Templates.
  *
- * shell sort(希尔排序)：每隔一定的步长的元素进行排序如：h=6，则为0, 6, 12, 18...
+ * shell Sort(希尔排序)：每隔一定的步长的元素进行排序如：h=6，则为0, 6, 12, 18...
  * 对于希尔排序的序列值h建议采用：
  * h(1) = 1
  * h(n) = 3*h(n-1) + 1

@@ -1,4 +1,4 @@
-package zhang.algorithm.modelUtil.sort;
+package zhang.algorithm.modelUtil.Sort;
 
 import zhang.algorithm.modelUtil.ZhangUtil;
 

@@ -5,4 +5,9 @@
 2016/5/5
 
 ## Update Time
-2016/6/24
+2016/6/27
+
+## Quote(引用)
+This place I will introduce some very good blog.
+CSDN Sunny Yoona算法专栏：[【算法系列】](http://blog.csdn.net/column/details/computeralgorithms.html?&page=2)
+

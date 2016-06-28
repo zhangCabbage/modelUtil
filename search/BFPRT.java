@@ -1,4 +1,4 @@
-package zhang.algorithm.modelUtil.search;
+package zhang.algorithm.modelUtil.Search;
 
 /**
  * Created by IntelliJ IDEA.

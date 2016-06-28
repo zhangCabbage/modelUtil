@@ -50,7 +50,7 @@ public class OptimalBinaryTree {
             }
         }
         ZhangUtil.printIntMatrix(w);
-        System.out.println("the total search probability of this optimal BST is "+ e[1][num]);
+        System.out.println("the total Search probability of this optimal BST is "+ e[1][num]);
         return root;
     }
 

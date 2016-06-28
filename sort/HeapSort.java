@@ -1,4 +1,4 @@
-package zhang.algorithm.modelUtil.sort;
+package zhang.algorithm.modelUtil.Sort;
 
 import zhang.algorithm.modelUtil.Tree.BinaryTree;
 import zhang.algorithm.modelUtil.ZhangUtil;
@@ -10,7 +10,7 @@ import zhang.algorithm.modelUtil.ZhangUtil;
  * Time: 19:21
  * To change this template use File | Settings | File Templates.
  *
- * use to realize heap sort(堆排序)
+ * use to realize heap Sort(堆排序)
  *
  * about heap:
  * 1、堆一般通过数组来存储
