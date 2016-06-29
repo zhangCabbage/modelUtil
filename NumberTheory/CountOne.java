@@ -53,7 +53,7 @@ public class CountOne {
 	public long countOne2(long num){
 		long count = 0;
 		long i = 1;
-		
+
 		while(num/i != 0){
 			int current = (int) ((num/i)%10);
 			long before = num/(i*10);
@@ -69,7 +69,7 @@ public class CountOne {
 		}
 		return count;
 	}
-	
+
 	public static void main(String[] args){
 		CountOne test = new CountOne();
 		long num = 999911212999999999L;
