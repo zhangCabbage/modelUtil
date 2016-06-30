@@ -78,6 +78,30 @@ public class FastSort {
         }
     }
 
+    /**
+     * 通过双指针单向的方式，分组数组array中从l到r，以array[l]为主元povitKey
+     *
+     * 这种单向的方式比双向慢了很多，但是它的调整过程很有趣
+     * i变量，遇到大于temp的数就不再前进，直到遍历到下一个小于temp的数下边j，才把i,  j交换！
+     *
+     * @param array 数组
+     * @param l 左起始下标
+     * @param r 右结束下标
+     * @return 返回调整数组后，中间位置下标
+     */
+    public int partitation(int[] array, int l, int r){
+        int i = l-1;
+        int temp = array[r];
+        for(int j=l; j<r; j++){
+            if(array[j] < temp){
+                i++;
+                ZhangUtil.swap(array, i, j);
+            }
+        }
+        ZhangUtil.swap(array, i+1, r);
+        return i+1;
+    }
+
     public static void main(String[] args) {
         int[] nums = {3, 2, 1};
 //        fastSort(nums, 0, nums.length - 1);
