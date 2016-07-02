@@ -1,6 +1,6 @@
 package zhang.algorithm.modelUtil.Sort;
 
-import zhang.algorithm.modelUtil.ZhangUtil;
+import zhang.algorithm.modelUtil.Array.ArrayTool;
 
 /**
  * Created by IntelliJ IDEA.
@@ -62,6 +62,6 @@ public class InsertSort {
         int[] nums = {3, 2, 1, 5, 4, 7};
 //        int[] nums = {1, 2, 3, 4, 5};
         insertSort2(nums);
-        ZhangUtil.printArray(nums);
+        ArrayTool.printArray(nums);
     }
 }

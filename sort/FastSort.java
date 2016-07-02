@@ -1,6 +1,6 @@
 package zhang.algorithm.modelUtil.Sort;
 
-import zhang.algorithm.modelUtil.ZhangUtil;
+import zhang.algorithm.modelUtil.Array.ArrayTool;
 
 /**
  * 时间复杂度分析：
@@ -95,10 +95,10 @@ public class FastSort {
         for(int j=l; j<r; j++){
             if(array[j] < temp){
                 i++;
-                ZhangUtil.swap(array, i, j);
+                ArrayTool.swap(array, i, j);
             }
         }
-        ZhangUtil.swap(array, i+1, r);
+        ArrayTool.swap(array, i+1, r);
         return i+1;
     }
 
@@ -106,6 +106,6 @@ public class FastSort {
         int[] nums = {3, 2, 1};
 //        fastSort(nums, 0, nums.length - 1);
         fastSort2(nums, 0, nums.length - 1);
-        ZhangUtil.printArray(nums);
+        ArrayTool.printArray(nums);
     }
 }

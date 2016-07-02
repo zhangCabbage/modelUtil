@@ -1,7 +1,7 @@
 package zhang.algorithm.modelUtil.Sort;
 
+import zhang.algorithm.modelUtil.Array.ArrayTool;
 import zhang.algorithm.modelUtil.Tree.BinaryTree;
-import zhang.algorithm.modelUtil.ZhangUtil;
 
 /**
  * Created by IntelliJ IDEA.
@@ -68,7 +68,7 @@ public class HeapSort {
      * @param n 表示小顶堆的元素个数
      */
     public static void minHeapDeleteNumber(int[] array, int n){
-        ZhangUtil.swap(array, 0, n-1);
+        ArrayTool.swap(array, 0, n-1);
         minHeapFixdown(array, 0, n-1);
     }
 
@@ -87,6 +87,6 @@ public class HeapSort {
         System.out.println(BinaryTree.instance(nums));
 
         heapSort(nums);
-        ZhangUtil.printArray(nums);
+        ArrayTool.printArray(nums);
     }
 }

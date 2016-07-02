@@ -1,6 +1,6 @@
 package zhang.algorithm.modelUtil.Sort;
 
-import zhang.algorithm.modelUtil.ZhangUtil;
+import zhang.algorithm.modelUtil.Array.ArrayTool;
 
 /**
  * 交换排序，通过交换相邻项，直至有序。其中典型的实现是冒泡排序
@@ -23,7 +23,7 @@ public class BubbleSort {
 			for(int j=0; j<nums.length-i; j++){
 				if(nums[j] > nums[j+1]){
 					flag = true;
-					ZhangUtil.swap(nums, j, j+1);
+					ArrayTool.swap(nums, j, j+1);
 				}
 			}
 			if(flag == false){
@@ -35,6 +35,6 @@ public class BubbleSort {
 	public static void main(String[] args) {
 		int[] nums = {3, 2};
 		bubbleSort(nums);
-		ZhangUtil.printArray(nums);
+		ArrayTool.printArray(nums);
 	}
 }

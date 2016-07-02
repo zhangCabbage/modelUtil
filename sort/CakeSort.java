@@ -1,5 +1,6 @@
 package zhang.algorithm.modelUtil.Sort;
 
+import zhang.algorithm.modelUtil.Array.ArrayTool;
 import zhang.algorithm.modelUtil.ZhangUtil;
 
 /**
@@ -48,10 +49,10 @@ public class CakeSort {
             return;
         }
         for(int i=1; i<cakeCnt; i++){
-            ZhangUtil.reverse(cakeArray, 0, i);
+            ArrayTool.reverse(cakeArray, 0, i);
             swapArray[step] = i;
             recusiveSort(cakeArray, cakeCnt, step+1);
-            ZhangUtil.reverse(cakeArray, 0, i);
+            ArrayTool.reverse(cakeArray, 0, i);
         }
     }
 
@@ -59,7 +60,7 @@ public class CakeSort {
         System.out.print("通过以下变换：");
         for(int i=0; i<maxSearchSwap; i++){
             System.out.print(finalSwapArray[i]+" ");
-            ZhangUtil.swap(cakeArray, 0, finalSwapArray[i]);
+            ArrayTool.swap(cakeArray, 0, finalSwapArray[i]);
         }
         System.out.println();
         System.out.println("共查找--->"+searchNum);
@@ -106,9 +107,9 @@ public class CakeSort {
         ZhangUtil.setStartTime();
         CakeSort.sort(cakeArray);
         System.out.println("总耗时-----> "+ZhangUtil.getIntervalTime());
-        ZhangUtil.printArray(cakeArray);
+        ArrayTool.printArray(cakeArray);
         printResult(cakeArray);
-        ZhangUtil.printArray(cakeArray);
+        ArrayTool.printArray(cakeArray);
         //{3,1,2,6,5,4,9,8,7,0}
         //答案是4 8 6 8 4 9
     }
