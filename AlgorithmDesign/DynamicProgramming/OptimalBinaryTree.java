@@ -1,5 +1,6 @@
 package zhang.algorithm.modelUtil.AlgorithmDesign.DynamicProgramming;
 
+import zhang.algorithm.modelUtil.Array.ArrayTool;
 import zhang.algorithm.modelUtil.ZhangUtil;
 
 /**
@@ -49,7 +50,7 @@ public class OptimalBinaryTree {
                 }
             }
         }
-        ZhangUtil.printIntMatrix(w);
+        ArrayTool.printIntMatrix(w);
         System.out.println("the total Search probability of this optimal BST is "+ e[1][num]);
         return root;
     }
@@ -163,8 +164,8 @@ public class OptimalBinaryTree {
         double[] p = {-1, 0.15, 0.1, 0.05, 0.1, 0.2};
         double[] q = {0.05, 0.1, 0.05, 0.05, 0.05, 0.1};
         int num = 5;
-        ZhangUtil.printIntMatrix(OptimalBinaryTree.optimalBST(p, q, num));
-        ZhangUtil.printIntMatrix(OptimalBinaryTree.optimalBST2(p, q, num));
+        ArrayTool.printIntMatrix(OptimalBinaryTree.optimalBST(p, q, num));
+        ArrayTool.printIntMatrix(OptimalBinaryTree.optimalBST2(p, q, num));
 
 
         double[] p1 = {0.3, 0.05, 0.08, 0.45, 0.12};
