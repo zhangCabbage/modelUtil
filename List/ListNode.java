@@ -7,9 +7,11 @@ package zhang.algorithm.modelUtil.List;
 public class ListNode {
     public int val;
     public ListNode next;
-    public ListNode(){
+
+    public ListNode() {
 
     }
+
     public ListNode(int x) {
         val = x;
     }
@@ -19,12 +21,12 @@ public class ListNode {
         StringBuffer sb = new StringBuffer();
         ListNode temp = this;
         sb.append("[");
-        while(temp != null){
+        while (temp != null) {
             sb.append(temp.val);
             sb.append(", ");
             temp = temp.next;
         }
-        sb.delete(sb.length()-2, sb.length());
+        sb.delete(sb.length() - 2, sb.length());
         sb.append("]");
         return sb.toString();
     }
