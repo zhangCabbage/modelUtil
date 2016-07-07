@@ -429,7 +429,7 @@ public class BinaryTree {
 
     public static void main(String[] args) {
 //        int[] nums = {1, 2, 3, -1, -1, 4, -1, 5, 6, -1, -1, 7, 8, -1, -1, 9};
-        int[] nums = {1, 2, 3, 0, 4, 5, 0, 6, 7, 0, 8};
+        int[] nums = {1, 0, 3, 0, 4, 0, 6, 0, 8};
         BinaryTree binaryTree = BinaryTree.instance(nums);
         binaryTree.print();
 
