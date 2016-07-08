@@ -86,11 +86,9 @@ public class ArrayTool {
      * @param end
      */
     public static void reverse(int[] array, int start, int end) {
-        int i, j;
-        for (i = start, j = end; i < j; i++, j--) {
-            int temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
+        int i = start, j = end;
+        while(i < j){
+            swap(array, i++, j--);
         }
     }
 
