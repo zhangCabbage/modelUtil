@@ -24,4 +24,33 @@ public class ListTool {
 
         return root;
     }
+
+    /**
+     * reverse single linked list
+     *
+     * @param head
+     */
+    public static ListNode reverse(ListNode head) {
+        if (head == null || head.next == null) return head;
+
+        ListNode cur = head.next;
+        head.next = null;
+
+        while (cur != null) {
+            ListNode temp = cur.next;
+            cur.next = head;
+            head = cur;
+            cur = temp;
+        }
+        return head;
+    }
+
+    public static void main(String[] args) {
+        int[] array = {1, 2, 3, 4};
+        ListNode head = factory(array);
+        System.out.println(head.toString());
+
+        head = reverse(head);
+        System.out.println(head.toString());
+    }
 }
