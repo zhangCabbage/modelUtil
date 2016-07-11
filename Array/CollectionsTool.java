@@ -24,10 +24,20 @@ public class CollectionsTool<T> {
         return set;
     }
 
-    public void reverse(T[] array, int start, int end){
-        while(){
+    public void reverse(T[] array){
+        reverse(array, 0, array.length);
+    }
 
+    public void reverse(T[] array, int start, int end){
+        while(start < end){
+            swap(array, start++, end--);
         }
+    }
+
+    public void swap(T[] array, int left, int right){
+        T temp = array[left];
+        array[left] = array[right];
+        array[right] = temp;
     }
 
     public static void main(String[] args) {
