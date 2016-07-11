@@ -24,6 +24,12 @@ public class CollectionsTool<T> {
         return set;
     }
 
+    public void reverse(T[] array, int start, int end){
+        while(){
+
+        }
+    }
+
     public static void main(String[] args) {
         //set 使用范例
         CollectionsTool<String> collectionsTool = new CollectionsTool<String>();
