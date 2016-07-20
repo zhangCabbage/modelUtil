@@ -32,7 +32,6 @@ public class MaxNumber {
     }
 
     public static void main(String[] args) {
-
         System.out.println(findMaxNumber(1));
 //        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in), 1 << 16);
 //        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out), 1 << 16);
