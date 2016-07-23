@@ -35,6 +35,6 @@ public class PrimeNumber {
 	}
 	
 	public static void main(String[] args){
-		PrimeNumber.filterPrime(100);
+		PrimeNumber.filterPrime(200);
 	}
 }
