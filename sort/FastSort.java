@@ -80,8 +80,13 @@ public class FastSort {
     }
 
     /**
+     * Error method !!
+     * <p>
+     * But this is wrong because of this mid index is not right.
+     * so I make a test for this function
+     * {1, 1, 1, 1, 4, 1, 2, 3, 6}
+     * the result is {1, 1, 1, 1, 3, 1, 2, 4, 6}
      *
-     * easy to control way.
      * @param nums
      * @param low
      * @param high
@@ -112,7 +117,7 @@ public class FastSort {
     }
 
     /**
-     * 通过双指针单向的方式，分组数组array中从l到r，以array[l]为主元povitKey
+     * 通过双指针单向的方式，分组数组array中从l到r，以array[r]为主元povitKey
      * <p>
      * 这种单向的方式比双向慢了很多，但是它的调整过程很有趣
      * i变量，遇到大于temp的数就不再前进，直到遍历到下一个小于temp的数下边j，才把i,  j交换！
@@ -122,24 +127,26 @@ public class FastSort {
      * @param r     右结束下标
      * @return 返回调整数组后，中间位置下标
      */
-    public int partitation(int[] array, int l, int r) {
-        int i = l - 1;
+    public static int partitation(int[] array, int l, int r) {
+        int i = l;
         int temp = array[r];
+
         for (int j = l; j < r; j++) {
             if (array[j] < temp) {
-                i++;
-                ArrayTool.swap(array, i, j);
+                ArrayTool.swap(array, i++, j);
             }
         }
-        ArrayTool.swap(array, i + 1, r);
-        return i + 1;
+        ArrayTool.swap(array, i, r);
+        return i;
     }
 
     public static void main(String[] args) {
-        int[] nums = {3, 4, 523, 12, 5};
+        int[] nums = {5, 7, 9, 8, 4, 1, 2, 3, 6};
 //        fastSort(nums, 0, nums.length - 1);
 //        fastSort2(nums, 0, nums.length - 1);
-        fastSort3(nums, 0, nums.length - 1);
+//        fastSort3(nums, 0, nums.length - 1);
+
+        System.out.println(partitation(nums, 0, nums.length - 1));
         ArrayTool.printArray(nums);
     }
 }
