@@ -87,9 +87,17 @@ public class ArrayTool {
      */
     public static void reverse(int[] array, int start, int end) {
         int i = start, j = end;
-        while(i < j){
+        while (i < j) {
             swap(array, i++, j--);
         }
+    }
+
+    public static long sum(int[] nums) {
+        long sum = 0;
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+        }
+        return sum;
     }
 
     public static char[][] string2Char(String[] strs) {

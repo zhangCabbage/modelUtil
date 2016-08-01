@@ -59,6 +59,21 @@ public class GCD {
     }
 
     /**
+     * 求一个数组的最大公约数
+     *
+     * @param nums
+     * @return
+     */
+    public static int EuclidGCD(int[] nums) {
+        return EuclidGCD(nums, 0, nums.length - 1);
+    }
+
+    public static int EuclidGCD(int[] nums, int start, int end) {
+        if (start == end) return nums[start];
+        return EuclidGCD(nums[start], EuclidGCD(nums, start + 1, end));
+    }
+
+    /**
      * 扩展的欧几里得算法，用来求 a*x + b*y = gcd，有多少整数解。
      * 把欧几里得算法算一遍之后，从后往前倒回去，加和便是扩展欧几里得最后的结果。
      * <p>
