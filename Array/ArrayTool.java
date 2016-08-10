@@ -42,6 +42,21 @@ public class ArrayTool {
      *
      * @param matrix
      */
+    public static void printIntMatrix(int[][] matrix, String name) {
+        System.out.println("--->"+name);
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    /**
+     * 输出整数型矩阵
+     *
+     * @param matrix
+     */
     public static void printIntMatrix(double[][] matrix) {
         System.out.println("-----matrix start-----");
         for (int i = 0; i < matrix.length; i++) {
