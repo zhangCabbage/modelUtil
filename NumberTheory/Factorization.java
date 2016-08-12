@@ -1,6 +1,7 @@
 package zhang.algorithm.modelUtil.NumberTheory;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -10,9 +11,9 @@ import java.util.List;
  * Time: 上午9:42
  * To change this template use File | Settings | File Templates.
  * <p>
- * 质因数分解
+ * 因数分解
  */
-public class PrimeFactorization {
+public class Factorization {
 
     private int number;
 
@@ -32,6 +33,16 @@ public class PrimeFactorization {
      */
     private List<Integer> nums;
 
+    /**
+     * 因数个数
+     */
+    private int factorCount;
+
+    /**
+     * 因数数组, eg: 12的因数有:1、2、3、4、6、12
+     */
+    private List<Integer> factors;
+
     public int getNumber() {
         return number;
     }
@@ -48,7 +59,16 @@ public class PrimeFactorization {
         return nums;
     }
 
+    public int getFactorCount() {
+        return factorCount;
+    }
+
+    public List<Integer> getFactors() {
+        return factors;
+    }
+
     /**
+     * 质因数分解!
      * 使用试除法来求数num的所有质因数
      * 这种试除法对 n < 2^10 的数还是挺有效的, 一旦更大的数, 复杂度将呈指数增长。
      *
@@ -79,14 +99,42 @@ public class PrimeFactorization {
         }
     }
 
-    public static PrimeFactorization instance(int num) {
-        PrimeFactorization factory = new PrimeFactorization();
+    /**
+     * 用试除法找所有因数
+     *
+     * @param num
+     */
+    public void findFactor(int num) {
+        factors = new ArrayList<>();
+
+        factors.add(1);
+        factors.add(num);
+        factorCount += 2;
+
+        int sqrt = (int) Math.sqrt(num);
+        for (int i = 2; i <= sqrt; i++) {
+            if (num % i == 0) {
+                factors.add(i);
+                factorCount++;
+
+                if (i != sqrt) {
+                    factors.add(num / i);
+                    factorCount++;
+                }
+            }
+        }
+
+        Collections.sort(factors);
+    }
+
+    public static Factorization instance(int num) {
+        Factorization factory = new Factorization();
         factory.findPrimeFactor(num);
+        factory.findFactor(num);
         return factory;
     }
 
-    @Override
-    public String toString() {
+    public void showPrimeFactors() {
         StringBuffer sb = new StringBuffer();
         sb.append("Prime Factorization : " + number + " = ");
         for (int i = 0; i < counts; i++) {
@@ -96,11 +144,23 @@ public class PrimeFactorization {
             }
             if (i != counts - 1) sb.append(" * ");
         }
-        return sb.toString();
+        System.out.println(sb.toString());
+    }
+
+    public void showFactors() {
+        StringBuffer sb = new StringBuffer();
+        sb.append("the factor count of " + number + " is " + factorCount);
+        sb.append(" --> ");
+        for (int i = 0; i < factorCount; i++) {
+            sb.append(factors.get(i));
+            if (i != factorCount - 1) sb.append("、");
+        }
+        System.out.println(sb.toString());
     }
 
     public static void main(String[] args) {
-        PrimeFactorization test = instance(423);
-        System.out.println(test);
+        Factorization test = instance(423);
+        test.showPrimeFactors();
+        test.showFactors();
     }
 }

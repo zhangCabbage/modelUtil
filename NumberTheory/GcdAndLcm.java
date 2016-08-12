@@ -34,7 +34,7 @@ public class GcdAndLcm {
      */
     public static int findNumCountsByGCDAndLCM(int gcd, int lcm) {
         if (lcm % gcd != 0) return 0;
-        PrimeFactorization factor = PrimeFactorization.instance(lcm / gcd);
+        Factorization factor = Factorization.instance(lcm / gcd);
         return (int) Math.pow(2, factor.getCounts());
     }
 
