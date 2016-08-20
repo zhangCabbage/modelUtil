@@ -100,8 +100,8 @@ public class KNumNearestN {
     public static void main(String[] args) {
         KNumNearestN test = new KNumNearestN();
 
-        int[] arrays = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17, 19, 21, 23};
-        int n = 20;
+        int[] arrays = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17, 19, 21, 100};
+        int n = 21;
         int k = 9;
         System.out.println(test.findRangeNearestN1(arrays, n, k));
         System.out.println(test.findRangeNearestN2(arrays, n, k));
