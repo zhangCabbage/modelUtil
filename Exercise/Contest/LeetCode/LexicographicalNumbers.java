@@ -38,7 +38,7 @@ public class LexicographicalNumbers {
     }
 
     /**
-     * 排序方式为: if n = 123
+     * if n = 123
      * 1, 10, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109,
      * 11, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119,
      * 12, 120, 121, 122, 123,
@@ -55,7 +55,7 @@ public class LexicographicalNumbers {
     public List<Integer> lexicalOrder2(int n) {
         List<Integer> res = new ArrayList<>();
 
-        int num = 1;
+        int num = 1;//begin number is 1
         while (true) {
             while (num <= n) {
                 res.add(num);

@@ -18,13 +18,14 @@ public class LongestAbsolutePath {
      * @return
      */
     public int lengthLongestPath(String input) {
-        int longest = 0;
-        int curLen = 0;
+        int longest = 0;//the longest lens
+        int curLen = 0;//temp current lens
 
-        int curStart = 0, curEnd = curStart;
-        boolean isFile = false;
+        int curStart = 0, curEnd = curStart;//one dir path's start index and end index
+        boolean isFile = false;//judge one path is file or not
 
         int[] levels = new int[100];
+        //use to storage the every level path string lens, I assume it will not bigger than 100
         int curLevel = 0;
 
         while (curEnd < input.length()) {
@@ -32,8 +33,9 @@ public class LongestAbsolutePath {
             if (c == '.') isFile = true;
 
             if (c == '\n' || curEnd == input.length() - 1) {
-                //two situation to stop
+                //two situation to stop judge
                 if (isFile) {
+                    //if current path is a file, so sum the path len
                     for (int i = 0; i < curLevel; i++) {
                         curLen += levels[i];
                         curLen++;
@@ -48,6 +50,7 @@ public class LongestAbsolutePath {
                 levels[curLevel] = curEnd - curStart;
                 curLevel = 0;
                 curEnd += 1;
+                //judge the number of \t and jump to next character
                 while (input.charAt(curEnd) == '\t') {
                     curEnd += 1;
                     curLevel++;
