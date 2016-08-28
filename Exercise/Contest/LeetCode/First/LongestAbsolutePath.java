@@ -1,4 +1,4 @@
-package zhang.algorithm.modelUtil.Exercise.Contest.LeetCode;
+package zhang.algorithm.modelUtil.Exercise.Contest.LeetCode.First;
 
 /**
  * Created by IntelliJ IDEA.

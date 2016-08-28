@@ -135,12 +135,13 @@ public class Permutation {
 		this.m = m;
 		arrange3(strChar, 0, m);
 	}
+
 	/**
-	 * 
-	 * @param c 
-	 * @param i 
+	 *
+	 * @param c
+	 * @param start
 	 * @param count 表示还需要循环打印的字符数
-	 */
+     */
 	private void arrange3(char[] c, int start, int count) {
 		if(count == 0){
 			//打印

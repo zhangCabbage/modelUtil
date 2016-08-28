@@ -8,7 +8,12 @@ package zhang.algorithm.modelUtil.NumberTheory;
  * To change this template use File | Settings | File Templates.
  */
 public class Random {
-
+    /**
+     * Math.random() --> [0, 1)生成 start
+     * @param start
+     * @param end
+     * @return
+     */
     public static long random(long start, long end) {
         return (long) (Math.random() * (end - start + 1)) + start;
     }

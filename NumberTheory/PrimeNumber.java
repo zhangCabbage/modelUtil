@@ -123,8 +123,10 @@ public class PrimeNumber {
     }
 
     public static void main(String[] args) {
-        int n = 1000000111;
-        System.out.println(isPrimeByFilter(n));
-        System.out.println(isPrimeByMillerRabin(n));
+
+        System.out.println(getTotalPrime(150));
+//        int n = 1000000111;
+//        System.out.println(isPrimeByFilter(n));
+//        System.out.println(isPrimeByMillerRabin(n));
     }
 }
