@@ -33,6 +33,9 @@ public class question390_Elimination_Game {
 
     /**
      * so I change in this way to solve this problem. Basically same way
+     * if n is odd, the result of [1, 2, 3, 4, 5, 6, 7, 8, 9] is same as [1, 2, 3, 4, 5, 6, 7, 8]
+     * Original:[1, 2, 3, 4, 5, 6, 7, 8, 9] or [1, 2, 3, 4, 5, 6, 7, 8]
+     * Round 1: [2, 4, 6, 8], => same like [1, 2, 3, 4], but from right to left
      * <p>
      * <strong>result of test:</strong>
      * 3377 / 3377 test cases passed
@@ -45,7 +48,6 @@ public class question390_Elimination_Game {
     public int lastRemaining2(int n) {
         if (n == 1) return 1;
         if (n < 6) return 2;
-        if (n % 2 != 0) return lastRemaining2(n - 1);
         return 2 * (n / 2 + 1 - lastRemaining2(n / 2));
     }
 
