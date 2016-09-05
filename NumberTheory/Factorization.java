@@ -100,7 +100,7 @@ public class Factorization {
     }
 
     /**
-     * 用试除法找所有因数
+     * 用试除法找所有因数, eg the factor of 12 is => 1, 2, 3, 4, 6, 12
      *
      * @param num
      */
