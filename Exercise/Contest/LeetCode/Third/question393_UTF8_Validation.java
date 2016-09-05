@@ -9,6 +9,10 @@ package zhang.algorithm.modelUtil.Exercise.Contest.LeetCode.Third;
  */
 public class question393_UTF8_Validation {
     /**
+     * 45 / 45 test cases passed
+     * Status: Accepted
+     * Runtime: 7 ms
+     *
      * @param data
      * @return
      */
@@ -27,7 +31,7 @@ public class question393_UTF8_Validation {
                 if ((digit & 0xF0) == 0xF0) follow = 3;
                 else if ((digit & 0xE0) == 0xE0) follow = 2;
                 else if ((digit & 0xC0) == 0xC0) follow = 1;
-                else if((digit & 0x80) == 0x80) return false;
+                else if ((digit & 0x80) == 0x80) return false;
             }
         }
 

@@ -9,6 +9,11 @@ package zhang.algorithm.modelUtil.Exercise.Contest.LeetCode.Third;
  */
 public class IsSubsequence {
     /**
+     *
+     * 12 / 12 test cases passed
+     * Status: Accepted
+     * Runtime: 17 ms
+     *
      * @param s
      * @param t
      * @return
