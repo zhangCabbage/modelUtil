@@ -7,9 +7,10 @@ package zhang.algorithm.modelUtil.Exercise.Contest.LeetCode.Third;
  * Time: 下午8:07
  * To change this template use File | Settings | File Templates.
  */
-public class IsSubsequence {
+public class question392_IsSubsequence {
     /**
-     *
+     * judge s is in t
+     * <p>
      * 12 / 12 test cases passed
      * Status: Accepted
      * Runtime: 17 ms
@@ -32,8 +33,30 @@ public class IsSubsequence {
         return sIndex == sChar.length;
     }
 
+    /**
+     * 13 / 13 test cases passed
+     * Status: Accepted
+     * Runtime: 2 ms
+     *
+     * @param s
+     * @param t
+     * @return
+     */
+    public boolean isSubsequence2(String s, String t) {
+        int lastCharPosition = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int index = t.indexOf(s.charAt(i), lastCharPosition);
+            if (index < lastCharPosition) {
+                return false;
+            } else {
+                lastCharPosition = index + 1;
+            }
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
-        IsSubsequence test = new IsSubsequence();
+        question392_IsSubsequence test = new question392_IsSubsequence();
         String s = "axc";
         String t = "ahbgdc";
         System.out.println(test.isSubsequence(s, t));
