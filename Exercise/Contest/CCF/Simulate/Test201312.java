@@ -142,9 +142,28 @@ public class Test201312 {
         }
     }
 
+    /**
+     * [dp to solve this problem](http://www.cnblogs.com/tgycoder/p/5052109.html)
+     * 类似有限状态自动机, the matrix of dp[i][j] is i 位的数在第 j 个状态
+     *
+     * @param in
+     */
     public static void four(Scanner in) {
         while (in.hasNext()) {
+            int n = in.nextInt();
+            long[][] dp = new long[n + 1][6];//注意可能会超出int最大值2147483647, 所以用long型
+            int MOD = 1000000007;
 
+            for (int i = 1; i < n + 1; i++) {
+                dp[i][0] = 1;
+                dp[i][1] = (dp[i - 1][0] + dp[i - 1][1] * 2) % MOD;
+                dp[i][2] = (dp[i - 1][0] + dp[i - 1][2]) % MOD;
+                dp[i][3] = (dp[i - 1][1] + dp[i - 1][3] * 2) % MOD;
+                dp[i][4] = (dp[i - 1][1] + dp[i - 1][2] + dp[i - 1][4] * 2) % MOD;
+                dp[i][5] = (dp[i - 1][3] + dp[i - 1][4] + dp[i - 1][5] * 2) % MOD;
+            }
+
+            System.out.println(dp[n][5]);
         }
     }
 
