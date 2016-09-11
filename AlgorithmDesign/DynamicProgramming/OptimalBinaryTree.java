@@ -49,7 +49,7 @@ public class OptimalBinaryTree {
                 }
             }
         }
-        ArrayTool.printIntMatrix(w);
+        ArrayTool.printDoubleMatrix(w);
         System.out.println("the total Search probability of this optimal BST is "+ e[1][num]);
         return root;
     }

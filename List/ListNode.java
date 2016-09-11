@@ -18,6 +18,7 @@ public class ListNode {
 
     @Override
     public String toString() {
+        //print the total linked list
         StringBuffer sb = new StringBuffer();
         ListNode temp = this;
         sb.append("[");

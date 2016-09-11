@@ -2,8 +2,9 @@ package zhang.algorithm.modelUtil.List;
 
 /**
  * Created by zhang_zack on 16/6/3.
+ * 链表的操作
  */
-public class ListTool {
+public class LinkedListTools {
     /**
      * build ArrayList by int array and return the ListNode root.
      *
