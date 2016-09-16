@@ -15,11 +15,16 @@ public class question398_Random_Pick_Index {
     private Random random;
     //方法二
     private Map<Integer, List<Integer>> map;
+    //方法三
+    private int[] index;
+    private Map<Integer, Long> startEnd;
 
     public question398_Random_Pick_Index(int[] nums) {
+        //方法一
         this.nums = nums;
         random = new Random();
 
+        //方法二
         map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             List<Integer> res = map.get(nums[i]);
@@ -30,6 +35,31 @@ public class question398_Random_Pick_Index {
             } else {
                 res.add(i);
             }
+        }
+
+        //方法三
+        Map<Integer, Long> map = new HashMap();
+        for (int i = 0; i < nums.length; i++) {
+            Long res = map.get(nums[i]);
+            res = res == null ? 1 : res + 1;
+            map.put(nums[i], res);
+        }
+
+        startEnd = map;
+        Iterator<Integer> iterator = map.keySet().iterator();
+        long start = 0;
+        while (iterator.hasNext()) {
+            int key = iterator.next();
+            long value = map.get(key);
+            startEnd.put(key, start << 32 | start);
+            start += value;
+        }
+
+        index = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            Long value = startEnd.get(nums[i]);
+            index[(int) (value & 0xFFFFFFFF)] = i;
+            startEnd.put(nums[i], ++value);
         }
     }
 
@@ -73,9 +103,24 @@ public class question398_Random_Pick_Index {
         return res.get(random.nextInt(res.size()));
     }
 
+    /**
+     * Third
+     * Time Limit Exceeded
+     *
+     * @param target
+     * @return
+     */
+    public int pick3(int target) {
+        long res = startEnd.get(target);
+        int start = (int) (res >> 32);
+        int end = (int) (res & 0xFFFFFFFF);
+        return index[random.nextInt(end - start) + start];
+    }
+
     public static void main(String[] args) {
         int[] nums = {1, 2, 3, 3, 3};
         question398_Random_Pick_Index test = new question398_Random_Pick_Index(nums);
         System.out.println(test.pick2(3));
+        System.out.println(test.pick3(3));
     }
 }
