@@ -11,6 +11,12 @@ public class MinimumStepToOne {
     /**
      * 给一个数,只能进行+1、-1、/2的操作,问你最少步骤到1是多少?
      * 这里只考虑int范围内的数据,并考虑 负数 和 0 的情况
+     * this way when input is 100_000_000 the output 32 is wrong.
+     * the right answer is 31
+     * please turn to the leetcode contest four first problem 397 Integer Replacement
+     * =======
+     * ×
+     * =======
      *
      * @param num
      * @return
@@ -30,7 +36,7 @@ public class MinimumStepToOne {
 
     public static void main(String[] args) {
         MinimumStepToOne test = new MinimumStepToOne();
-        int num = -15;
+        int num = 100_000_000;
         System.out.println(test.minStepToOne(num));
     }
 }

@@ -42,6 +42,10 @@ public class BitTool {
         System.out.println(Integer.toBinaryString(n));
     }
 
+    public static void showBinary(long n) {
+        System.out.println(Long.toBinaryString(n));
+    }
+
     /**
      * this method reference the native way of java Int numberOfTrailingZeros
      * find the highest 1 bit in the binary num, no negative number
@@ -52,12 +56,28 @@ public class BitTool {
      */
     public static int numOfHigh1Bit(int num) {
         num = Math.abs(num);
-        if(num < 2) return 0;
+        if (num < 2) return 0;
         int temp, n = 0;
-        temp = num >> 16; if(temp != 0){ n += 16; num = temp;}
-        temp = num >> 8; if(temp != 0){ n += 8; num = temp;}
-        temp = num >> 4; if(temp != 0){ n += 4; num = temp;}
-        temp = num >> 2; if(temp != 0){ n += 2; num = temp;}
+        temp = num >> 16;
+        if (temp != 0) {
+            n += 16;
+            num = temp;
+        }
+        temp = num >> 8;
+        if (temp != 0) {
+            n += 8;
+            num = temp;
+        }
+        temp = num >> 4;
+        if (temp != 0) {
+            n += 4;
+            num = temp;
+        }
+        temp = num >> 2;
+        if (temp != 0) {
+            n += 2;
+            num = temp;
+        }
         return n + (num >> 1);
     }
 
@@ -72,10 +92,26 @@ public class BitTool {
 //        Integer.numberOfTrailingZeros(num);
         if (num == 0) return 32;
         int temp, n = 31;
-        temp = num << 16; if(temp != 0){ n -= 16; num = temp;}
-        temp = num << 8; if(temp != 0){ n -= 8; num = temp;}
-        temp = num << 4; if(temp != 0){ n -= 4; num = temp;}
-        temp = num << 2; if(temp != 0){ n -= 2; num = temp;}
+        temp = num << 16;
+        if (temp != 0) {
+            n -= 16;
+            num = temp;
+        }
+        temp = num << 8;
+        if (temp != 0) {
+            n -= 8;
+            num = temp;
+        }
+        temp = num << 4;
+        if (temp != 0) {
+            n -= 4;
+            num = temp;
+        }
+        temp = num << 2;
+        if (temp != 0) {
+            n -= 2;
+            num = temp;
+        }
         return n - ((num << 1) >>> 31);
     }
 
