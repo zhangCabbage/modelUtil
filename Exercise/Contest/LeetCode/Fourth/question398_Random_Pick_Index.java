@@ -17,7 +17,7 @@ public class question398_Random_Pick_Index {
     private Map<Integer, List<Integer>> map;
     //方法三
     private int[] index;
-    private Map<Integer, Long> startEnd;
+    private Map<Integer, Long> startEnd;//用来存放起始和结束下标
 
     public question398_Random_Pick_Index(int[] nums) {
         //方法一
@@ -93,7 +93,7 @@ public class question398_Random_Pick_Index {
 
     /**
      * Second
-     * Time Limit Exceeded, can not use map and list to storage the array nums
+     * Memory Limit Exceeded, can not use map and list to storage the array nums
      *
      * @param target
      * @return
@@ -105,7 +105,7 @@ public class question398_Random_Pick_Index {
 
     /**
      * Third
-     * Time Limit Exceeded
+     * Memory Limit Exceeded
      *
      * @param target
      * @return
@@ -115,6 +115,24 @@ public class question398_Random_Pick_Index {
         int start = (int) (res >> 32);
         int end = (int) (res & 0xFFFFFFFF);
         return index[random.nextInt(end - start) + start];
+    }
+
+    /**
+     * 这里还有一位使用treeMap的解决方案, 虽然最后结果仍是 [Memory Limit Exceeded]
+     * 但是解决问题的思路, 仍是有启发作用。
+     * <p>
+     * 使用 HashMap<Integer, TreeMap<Integer, Integer>> pos
+     * num -> start_position -> number of the same successive digit(相同连续数字)
+     * <num -> index> <index -> count of successive> (default is index -> 1)
+     * the author want to use this way to optimized the memory consuming
+     * <p>
+     * [https://discuss.leetcode.com/topic/58322/what-on-earth-is-meant-by-too-much-memory/5]
+     *
+     * @param target
+     * @return
+     */
+    public int pick4(int target) {
+        return 0;
     }
 
     public static void main(String[] args) {
