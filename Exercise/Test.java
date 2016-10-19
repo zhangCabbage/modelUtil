@@ -20,7 +20,6 @@ public class Test {
                 else
                     System.out.println("No");
             }
-
         }
     }
 
