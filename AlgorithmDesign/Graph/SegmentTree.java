@@ -12,6 +12,8 @@ package zhang.algorithm.modelUtil.AlgorithmDesign.Graph;
  * 注意: 理解线段树的区间更新中的延迟标记
  * [一步一步理解线段树]
  * (http://www.cnblogs.com/TenosDoIt/p/3453089.html)
+ * <p>
+ * 这里最大的理解障碍就是其中mark的使用!!
  */
 public class SegmentTree {
     public SegNode[] segNodes;
@@ -88,9 +90,11 @@ public class SegmentTree {
             segNode.lbd = segNode.rbd = segNode.lines = 1;
             segNode.len = segNode.r - segNode.l;
         } else if (segNode.l + 1 == segNode.r) {
-            //当mark == 0时, 此时此线段已被删除, 线段重置
+            //当mark == 0 或 -1 时, 此线段需被删除, 线段重置
+            //叶子节点的操作
             segNode.clear();
         } else {
+            //非叶子节点并且mark值不为1的节点的操作
             SegNode lNode = segNodes[root * 2 + 1];
             SegNode rNode = segNodes[root * 2 + 2];
             segNode.lbd = lNode.lbd;

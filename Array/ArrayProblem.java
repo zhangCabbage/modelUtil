@@ -1,6 +1,9 @@
 package zhang.algorithm.modelUtil.Array;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.PriorityQueue;
 
 /**
  * Created by IntelliJ IDEA.
@@ -11,7 +14,7 @@ import java.util.Arrays;
  */
 public class ArrayProblem {
     //--------------------------------------------------------------------------
-    //求数组中最长递增子序列
+    //1) 求数组中最长递增子序列
     //--------------------------------------------------------------------------
 
     /**
@@ -74,12 +77,155 @@ public class ArrayProblem {
     }
 
     //--------------------------------------------------------------------------
-    //求数组中最长递增子序列
+    //2) 一个源区间, 若干N无序目标区间, 判断源区间是否在目标区间中
+    // (http://blog.csdn.net/tianshuai1111/article/details/7828961)
+    //方法一: 并查集, 把每个区间合并到一个子树上, 以区间起点为准
+    //方法二: 排序(起点为准) -> 合并 -> 查找(二分查找, 以起点为准, 看源区间起点终点查找结果是否在同一个区间)
+    //--------------------------------------------------------------------------
+
+    /**
+     * 方法二
+     *
+     * @param sourceSect
+     * @param destSect
+     * @return
+     */
+    public boolean sectionConcide(int[] sourceSect, int[][] destSect) {
+        List<Section> lines = new ArrayList<>();  //不重合的线段
+        //先根据线段起始坐标 x 排序
+        PriorityQueue<Section> queue = new PriorityQueue<>();
+        for (int[] sect : destSect) {
+            queue.offer(new Section(sect));
+        }
+        lines.add(queue.poll());
+
+        //合并
+        while (!queue.isEmpty()) {
+            Section cur = queue.poll();
+            Section tmp = lines.get(lines.size() - 1);
+            if (cur.sect[0] <= tmp.sect[1]) {
+                if (cur.sect[1] > tmp.sect[1])
+                    tmp.sect[1] = cur.sect[1];
+            } else {
+                lines.add(cur);
+            }
+        }
+
+        //二分查找源线段, 以线段起点为依据
+        int m = binarySearch(sourceSect[0], lines);
+        int n = binarySearch(sourceSect[1], lines);
+        if (m == n && sourceSect[1] <= lines.get(m).sect[1]) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private int binarySearch(int source, List<Section> lines) {
+        int left = 0;
+        int right = lines.size() - 1;
+        while (left <= right) {
+            int mid = left + (right - left >> 1);
+            if (lines.get(mid).sect[0] > source) {
+                right = mid - 1;
+            } else if (lines.get(mid).sect[0] < source) {
+                left = mid + 1;
+            } else {
+                return mid;
+            }
+        }
+        return right;
+    }
+
+    /**
+     * 线段类
+     */
+    class Section implements Comparable {
+        int[] sect;
+
+        public Section(int[] sect) {
+            this.sect = sect;
+        }
+
+        @Override
+        public int compareTo(Object other) {
+            return this.sect[0] - ((Section) other).sect[0];
+        }
+    }
+
+    /**
+     * 方法一: 并查集
+     *
+     * @param sourceSect
+     * @param destSect
+     * @return
+     */
+    public boolean sectionConcide2(int[] sourceSect, int[][] destSect) {
+        makeSet(100);
+        for (int[] sect : destSect) {
+            for (int i = sect[0] + 1; i < sect[1]; i++) {
+                union(sect[0], i);
+            }
+        }
+
+        if (find(sourceSect[0]) == find(sourceSect[1])) {
+            return true;
+        }
+        return false;
+    }
+
+    private int[] father;
+    private int[] rank;
+
+    private void makeSet(int size) {
+        father = new int[size];
+        rank = new int[size];
+        for (int i = 0; i < father.length; i++) {
+            father[i] = i;
+            rank[i] = 1;
+        }
+    }
+
+    /**
+     * 查找
+     *
+     * @param x
+     * @return
+     */
+    private int find(int x) {
+        if (x != father[x]) {
+            father[x] = find(father[x]);
+        }
+        return father[x];
+    }
+
+    private void union(int start, int end) {
+        int x = find(start);
+        int y = find(end);
+
+        if (x != y) {
+            if (rank[x] < rank[y]) {
+                father[x] = y;
+            } else {
+                father[y] = x;
+                if (rank[x] == rank[y])
+                    rank[x]++;
+            }
+        }
+    }
+
+    //--------------------------------------------------------------------------
+    // main
     //--------------------------------------------------------------------------
     public static void main(String[] args) {
         ArrayProblem test = new ArrayProblem();
         int[] nums = {1, -1, 2, -3, 4, -5, 6, -7};
         System.out.println(test.maxIncreaseSubArray(nums));
         System.out.println(test.maxIncreaseSubArray2(nums));
+
+        int[][] sects = {{2, 3}, {1, 2}, {3, 9}};
+        int[] source = {1, 6};
+        System.out.println(test.sectionConcide(source, sects));
+        System.out.println(test.sectionConcide2(source, sects));
     }
 }

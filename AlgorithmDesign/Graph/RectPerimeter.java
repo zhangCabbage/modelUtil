@@ -27,7 +27,7 @@ import java.util.TreeSet;
  */
 public class RectPerimeter {
     /**
-     * 初始想法
+     * 初始想法, Error! 程序中有BUG,
      *
      * @param rects
      * @return
@@ -67,6 +67,8 @@ public class RectPerimeter {
             segTree.insert(0, event.rect[1], event.rect[3], event.mark);
             curTotalLen = segTree.len();
             res += Math.abs(curTotalLen - preTotalLen);
+            //BUG
+            //如果两个event.x相同, 那么res就会加重!!!
             if (event.x != set.last())
                 res += 2 * segTree.lines() * ((Integer) lines[map.get(event.x) + 1] - event.x);
             preTotalLen = curTotalLen;
