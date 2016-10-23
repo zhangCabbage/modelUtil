@@ -93,7 +93,7 @@ public class question438_Find_All_Anagrams_String {
 
     /**
      * 学会如何使用滑动窗口!!
-     *
+     * <p>
      * 29 / 29 test cases passed
      * Status: Accepted
      * Runtime: 19 ms
@@ -115,6 +115,8 @@ public class question438_Find_All_Anagrams_String {
         while (right < s.length()) {
             if (hash[s.charAt(right++)]-- >= 1) count--;
             if (count == 0) res.add(left);
+            //TODO
+            //has some question
             if (right - left == p.length() && hash[s.charAt(left++)]++ >= 0) count++;
         }
 
