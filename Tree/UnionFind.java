@@ -15,6 +15,8 @@ package zhang.algorithm.modelUtil.Tree;
  * 2) Union：将两个子集合并成同一个集合。
  * 还有一个
  * 3) makeSet，用于建立单元素集合
+ * <p>
+ * 傻子都能看懂的并查集入门(https://segmentfault.com/a/1190000004023326)
  */
 public class UnionFind {
 
