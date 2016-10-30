@@ -6,6 +6,8 @@ package zhang.algorithm.modelUtil.NumberTheory;
  * Date: 16/8/6
  * Time: 下午8:20
  * To change this template use File | Settings | File Templates.
+ * <p>
+ * 加减乘除的实现
  */
 public class MathOperation {
 
