@@ -15,7 +15,7 @@ public class question436_Find_Right_Interval {
      * <p>
      * 15 / 15 test cases passed.
      * Status: Accepted
-     * Runtime: 418 ms
+     * Runtime: 391 - 418 ms
      *
      * @param intervals
      * @return
@@ -63,7 +63,7 @@ public class question436_Find_Right_Interval {
 
     public static void main(String[] args) {
         question436_Find_Right_Interval test = new question436_Find_Right_Interval();
-        Interval[] intervals = {new Interval(1, 4), new Interval(2, 3), new Interval(3, 4)};
+        Interval[] intervals = {new Interval(1, 2)};
         ArrayTool.printArray(test.findRightInterval(intervals));
     }
 }
