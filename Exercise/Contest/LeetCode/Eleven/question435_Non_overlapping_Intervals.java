@@ -39,6 +39,30 @@ public class question435_Non_overlapping_Intervals {
     }
 
     /**
+     * we only sort by end is ok !!
+     *
+     * @param intervals
+     * @return
+     */
+    public int eraseOverlapIntervals2(Interval[] intervals) {
+        Arrays.sort(intervals, new Comparator<Interval>() {
+            @Override
+            public int compare(Interval o1, Interval o2) {
+                return o1.end - o2.end;  //先以end作为排序的依据, end越小在前
+            }
+        });
+
+        int end = Integer.MIN_VALUE;
+        int count = 0;
+        for (Interval interval : intervals) {
+            if (interval.start >= end) end = interval.end;
+            else count++;
+        }
+
+        return count;
+    }
+
+    /**
      * 开始第一次, 我也是以start进行排序, 但是可能我的分析逻辑不够清晰, 导致没有做出来。
      * 不过这种方式, 没有我上面一种方法逻辑清晰。
      * <p>
@@ -49,7 +73,7 @@ public class question435_Non_overlapping_Intervals {
      * @param intervals
      * @return
      */
-    public int eraseOverlapIntervals2(Interval[] intervals) {
+    public int eraseOverlapIntervals3(Interval[] intervals) {
         if (intervals.length < 2) return 0;
         Arrays.sort(intervals, new Comparator<Interval>() {
             @Override
