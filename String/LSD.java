@@ -49,6 +49,6 @@ public class LSD {
     public static void main(String[] args) {
         String s1 = "intention";
         String s2 = "execution";
-        System.out.println(levenshteinDistance(s1, s2));
+        System.out.println(levenshteinDistance(s1, s2));  //5
     }
 }

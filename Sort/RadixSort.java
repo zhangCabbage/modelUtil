@@ -15,6 +15,58 @@ import java.util.Arrays;
  */
 public class RadixSort {
     /**
+     * 計數排序, 注意和基數排序區分, 它倆是不同的兩個排序方法
+     * 计数排序是稳定的排序算法
+     *
+     * @param data
+     * @param k
+     */
+    public static void countiongSort(int[] data, int k) {
+        System.out.println();
+        System.out.println("countiong Sort");
+        int[] buckets = new int[k + 1];
+        int[] orderedData = new int[data.length];
+        int[] orderedIndex = new int[data.length];
+        //计数
+        for (int i = 0; i < data.length; i++) {
+            buckets[data[i]]++;
+        }
+
+        //保证为稳定排序的条件一
+        for (int i = 2; i <= k; i++) {
+            buckets[i] += buckets[i - 1];
+        }
+
+        //保证为稳定排序的条件二
+        for (int i = data.length - 1; i >= 0; i--) {
+            orderedData[buckets[data[i]] - 1] = data[i];
+            orderedIndex[--buckets[data[i]]] = i;
+        }
+
+        System.out.print("原始数组 -->");
+        ArrayTool.printArray(data);
+
+        System.out.print("排序后数组 -->");
+        ArrayTool.printArray(orderedData);
+
+        System.out.print("排序后下标 -->");
+        ArrayTool.printArray(orderedIndex);
+    }
+
+    /**
+     * 桶排序
+     * 上面计数排序中, 当我们算出buckets时, 我们可以不用再buckets[i] += buckets[i - 1], 直接遍历即可
+     * 这是一种特殊的桶排序, 更通俗化的桶排序是, 每个桶中放 K * i / M 至 K * (i + 1) / M 之间的数
+     * 而每个桶中用什么排序算法都可以, 然后依次收集每个桶中元素
+     *
+     * @param data
+     * @param k
+     */
+    public static void bucketSort(int[] data, int k) {
+        //省略...
+    }
+
+    /**
      * 对于现实中的人判断数之间的大小的思维习惯是 : 从高位到低位, 高位大的数据大, 高位相同的再比较低位
      * 而计算机这样做是增加难度的, 在比较低位的时候还需要考虑高位的大小。
      * 这里给出基数排序,从低位到高位比较。在这儿我就不详细介绍基数排序的问题了。
@@ -27,6 +79,8 @@ public class RadixSort {
      * @param d
      */
     public static void radixSort(int[] data, int radix, int d) {
+        System.out.println();
+        System.out.println("radix Sort");
 
         int[] buckets = new int[radix];
         int[] temp = new int[data.length];
@@ -61,12 +115,11 @@ public class RadixSort {
     }
 
     public static void main(String[] args) {
-        int[] nums = {1100, 192, 221, 12, 23};
-        radixSort(nums, 10, 4);
-        ArrayTool.printArray(nums);
+        int[] nums1 = {2, 8, 5, 1, 10, 5, 9, 9, 3, 5, 6, 6, 2, 8, 2};
+        countiongSort(nums1, 10);
 
-        //Test
-        System.out.println(--nums[1]);
-        ArrayTool.printArray(nums);
+        int[] nums2 = {1100, 192, 221, 12, 23};
+        radixSort(nums2, 10, 4);
+        ArrayTool.printArray(nums2);
     }
 }
