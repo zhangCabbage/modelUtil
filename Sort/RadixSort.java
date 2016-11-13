@@ -17,6 +17,8 @@ public class RadixSort {
     /**
      * 計數排序, 注意和基數排序區分, 它倆是不同的兩個排序方法
      * 计数排序是稳定的排序算法
+     * <p>
+     * 参见: https://www.byvoid.com/blog/sort-radix
      *
      * @param data
      * @param k
