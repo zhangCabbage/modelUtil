@@ -11,7 +11,7 @@ import java.util.Arrays;
  */
 public class question455_Assign_Cookies {
     /**
-     * How to improve?
+     * How to improve? the solution of Discuss is same as me.
      * <p>
      * 21 / 21 test cases passed.
      * Status: Accepted
