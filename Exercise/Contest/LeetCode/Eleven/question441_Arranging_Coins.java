@@ -6,6 +6,8 @@ package zhang.algorithm.modelUtil.Exercise.Contest.LeetCode.Eleven;
  * Date: 16/10/30
  * Time: 上午11:46
  * To change this template use File | Settings | File Templates.
+ * <p>
+ * Deal
  */
 public class question441_Arranging_Coins {
 

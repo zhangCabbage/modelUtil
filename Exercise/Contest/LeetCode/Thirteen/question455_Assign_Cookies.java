@@ -8,6 +8,8 @@ import java.util.Arrays;
  * Date: 16/11/13
  * Time: 下午2:43
  * To change this template use File | Settings | File Templates.
+ *
+ * Deal
  */
 public class question455_Assign_Cookies {
     /**

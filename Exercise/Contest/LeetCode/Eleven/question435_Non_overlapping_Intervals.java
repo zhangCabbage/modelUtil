@@ -9,6 +9,8 @@ import java.util.Comparator;
  * Date: 16/10/30
  * Time: 上午10:55
  * To change this template use File | Settings | File Templates.
+ *
+ * Deal
  */
 public class question435_Non_overlapping_Intervals {
     /**

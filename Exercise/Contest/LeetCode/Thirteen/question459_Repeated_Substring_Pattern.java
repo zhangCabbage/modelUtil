@@ -6,6 +6,8 @@ package zhang.algorithm.modelUtil.Exercise.Contest.LeetCode.Thirteen;
  * Date: 16/11/13
  * Time: 下午2:57
  * To change this template use File | Settings | File Templates.
+ *
+ * Deal
  */
 public class question459_Repeated_Substring_Pattern {
     /**
