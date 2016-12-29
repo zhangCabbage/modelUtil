@@ -41,10 +41,10 @@ public class Dijkstra {
                 path[i] = -1;
             }
             visited[i] = false;
-            path[start] = start;
-            dist[start] = 0;
         }
 
+        path[start] = start;
+        dist[start] = 0;
         visited[start] = true;
 
         for(int i=1; i<v.length; i++){

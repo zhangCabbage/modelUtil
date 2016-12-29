@@ -11,6 +11,13 @@ import java.util.Arrays;
  */
 public class question475_Heaters {
 
+    /**
+     * 不得不说, 隔一段时间再来看自己写的代码, 真是写的挺不错
+     *
+     * @param houses
+     * @param heaters
+     * @return
+     */
     public int findRadius(int[] houses, int[] heaters) {
         Arrays.sort(houses);
         Arrays.sort(heaters);
