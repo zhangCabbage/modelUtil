@@ -23,7 +23,7 @@ public class RadixSort {
      * @param data
      * @param k
      */
-    public static void countiongSort(int[] data, int k) {
+    public static void countingSort(int[] data, int k) {
         System.out.println();
         System.out.println("countiong Sort");
         int[] buckets = new int[k + 1];
@@ -118,7 +118,7 @@ public class RadixSort {
 
     public static void main(String[] args) {
         int[] nums1 = {2, 8, 5, 1, 10, 5, 9, 9, 3, 5, 6, 6, 2, 8, 2};
-        countiongSort(nums1, 10);
+        countingSort(nums1, 10);
 
         int[] nums2 = {1100, 192, 221, 12, 23};
         radixSort(nums2, 10, 4);

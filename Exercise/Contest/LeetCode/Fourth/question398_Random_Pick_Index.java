@@ -70,6 +70,7 @@ public class question398_Random_Pick_Index {
      * For the nth target, ++count is n.
      * Then the probability that rnd.nextInt(++count)==0 is 1/n.
      * Thus, the probability that return nth target is 1/n.
+     * 说明不清晰, 对于第i个下标, 要想选中, 必须满足第i个选中, 之后 n - i 个都不选中
      * For (n-1)th target, the probability of returning it is (n-1)/n * 1/(n-1)= 1/n.
      * <p>
      * 13 / 13 test cases passed
