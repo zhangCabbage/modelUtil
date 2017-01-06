@@ -116,6 +116,30 @@ public class FastSort {
         fastSort3(nums, mid + 1, right);
     }
 
+
+    /**
+     * another implement of fast sort
+     * 代码组织更加紧凑, 简洁 --《算法导论》
+     *
+     * @param nums
+     * @param low
+     * @param high
+     */
+    public static void fastSort4(int[] nums, int low, int high) {
+        if (low < high) {
+            int povit = nums[high];  //这里主元的选择是提高此算法的关键
+            int i = low - 1;
+            for (int j = low; j < high; j++) {
+                if (nums[j] <= povit) {
+                    ArrayTool.swap(nums, ++i, j);
+                }
+            }
+            ArrayTool.swap(nums, ++i, high);
+            fastSort4(nums, low, i - 1);
+            fastSort4(nums, i + 1, high);
+        }
+    }
+
     /**
      * 通过双指针单向的方式，分组数组array中从l到r，以array[r]为主元povitKey
      * <p>
