@@ -108,6 +108,8 @@ public class LCS {
 
     /**
      * 找出并返回一個 Longest Common Subsequence
+     * 沿着算LCS的方向往回走, 因为dp分析, dp[i, j]只与dp[i-1, j-1]、dp[i-1, j]、dp[i, j-1]有关
+     * 只有当从dp[i-1, j-1]来的才是公共子序列中的字符
      *
      * @param s1
      * @param s2
@@ -144,6 +146,7 @@ public class LCS {
         while (index < dp[m][n]) {
             int num = pre[x][y];
             if (num == 0) {
+                //!!!!
                 sb.append(s1.charAt(x - 1));
                 index++;
             }
