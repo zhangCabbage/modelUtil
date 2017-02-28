@@ -1,4 +1,4 @@
-package zhang.algorithm.modelUtil.NumberTheory;
+package zhang.algorithm.modelUtil.NumberTheory.Divisor;
 
 /**
  * 求两个数的最大公约数 (Greatest Common Divisor)
@@ -78,6 +78,7 @@ public class GCD {
      * 把欧几里得算法算一遍之后，从后往前倒回去，加和便是扩展欧几里得最后的结果。
      * <p>
      * 一定要思路清晰！！可以把递归过程用笔在本子上推导一遍，然后在码程序。
+     * 注意: a > b
      *
      * @return
      */

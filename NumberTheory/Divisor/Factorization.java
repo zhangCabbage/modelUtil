@@ -1,4 +1,4 @@
-package zhang.algorithm.modelUtil.NumberTheory;
+package zhang.algorithm.modelUtil.NumberTheory.Divisor;
 
 import java.util.ArrayList;
 import java.util.Collections;

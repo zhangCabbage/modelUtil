@@ -1,4 +1,4 @@
-package zhang.algorithm.modelUtil.NumberTheory;
+package zhang.algorithm.modelUtil.NumberTheory.Divisor;
 
 import zhang.algorithm.modelUtil.Array.ArrayTool;
 

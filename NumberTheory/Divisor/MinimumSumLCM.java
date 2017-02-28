@@ -1,4 +1,4 @@
-package zhang.algorithm.modelUtil.NumberTheory;
+package zhang.algorithm.modelUtil.NumberTheory.Divisor;
 
 /**
  * Created by IntelliJ IDEA.
@@ -35,9 +35,11 @@ public class MinimumSumLCM {
                 sum += num;
             }
         }
+
+        //边界条件的考虑!
         if (n == temp)
             sum += 1;
-        else if (primeNum == 1 || n != 1)
+        if (primeNum == 1 || n != 1)
             sum += n;
 
         return sum;
@@ -45,7 +47,7 @@ public class MinimumSumLCM {
 
     public static void main(String[] args) {
         MinimumSumLCM test = new MinimumSumLCM();
-        int n = 49;
+        int n = 3;
         System.out.println(test.minimumSumLcm(n));
     }
 }

@@ -11,14 +11,19 @@ import java.util.Arrays;
  * Time: 下午9:08
  * To change this template use File | Settings | File Templates.
  * <p>
- * 基数排序的实现
+ * [基数排序]的实现
+ * <p>
+ * Review Time: 2017-02-28 20:50:39
  */
 public class RadixSort {
     /**
      * 計數排序, 注意和基數排序區分, 它倆是不同的兩個排序方法
      * 计数排序是稳定的排序算法
      * <p>
-     * 参见: https://www.byvoid.com/blog/sort-radix
+     * 参见: 算法导论8.2
+     * <p>
+     * 计数排序的主要思想是: 确定比 x 小的元素个数, 利用这把 x 放入正确位置!
+     * 计数排序是基数排序的子过程, 所以其必须是稳定的!
      *
      * @param data
      * @param k
@@ -28,7 +33,7 @@ public class RadixSort {
         System.out.println("countiong Sort");
         int[] buckets = new int[k + 1];
         int[] orderedData = new int[data.length];
-        int[] orderedIndex = new int[data.length];
+        int[] orderedIndex = new int[data.length]; //记录排序后的下标, 可不用要
         //计数
         for (int i = 0; i < data.length; i++) {
             buckets[data[i]]++;
@@ -56,29 +61,19 @@ public class RadixSort {
     }
 
     /**
-     * 桶排序
-     * 上面计数排序中, 当我们算出buckets时, 我们可以不用再buckets[i] += buckets[i - 1], 直接遍历即可
-     * 这是一种特殊的桶排序, 更通俗化的桶排序是, 每个桶中放 K * i / M 至 K * (i + 1) / M 之间的数
-     * 而每个桶中用什么排序算法都可以, 然后依次收集每个桶中元素
-     *
-     * @param data
-     * @param k
-     */
-    public static void bucketSort(int[] data, int k) {
-        //省略...
-    }
-
-    /**
      * 对于现实中的人判断数之间的大小的思维习惯是 : 从高位到低位, 高位大的数据大, 高位相同的再比较低位
      * 而计算机这样做是增加难度的, 在比较低位的时候还需要考虑高位的大小。
-     * 这里给出基数排序,从低位到高位比较。在这儿我就不详细介绍基数排序的问题了。
      * 这里参考了[【Java排序算法（十一）：基数排序】](http://blog.csdn.net/apei830/article/details/6596104)
      * <p>
-     * 下面来实现基数排序。此基数排序实现的相当的巧妙!!!
+     * 参见: 算法导论8.3
+     * <p>
+     * 对于36和39, 当比较十位数都为3时, 这时需要保证其卫星数据(低位数据)顺序不变。
+     * 即 6 仍在 9 之前(低位排序的结果保留)!
+     * 桶排序 + 计数排序(每个桶可以使用其他排序算法) => 基数排序
      *
      * @param data
-     * @param radix
-     * @param d
+     * @param radix 基数
+     * @param d     最大的数的位数
      */
     public static void radixSort(int[] data, int radix, int d) {
         System.out.println();
@@ -114,6 +109,21 @@ public class RadixSort {
             System.arraycopy(temp, 0, data, 0, data.length);
             rate *= radix;
         }
+
+
+    }
+
+    /**
+     * 桶排序
+     * 上面计数排序中, 当我们算出buckets时, 我们可以不用再buckets[i] += buckets[i - 1], 直接遍历即可
+     * 这是一种特殊的桶排序, 更通俗化的桶排序是, 每个桶中放 K * i / M 至 K * (i + 1) / M 之间的数
+     * 而每个桶中用什么排序算法都可以, 然后依次收集每个桶中元素
+     *
+     * @param data
+     * @param k
+     */
+    public static void bucketSort(int[] data, int k) {
+        //省略...
     }
 
     public static void main(String[] args) {
