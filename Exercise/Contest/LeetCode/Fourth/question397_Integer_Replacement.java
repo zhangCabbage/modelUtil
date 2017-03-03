@@ -9,7 +9,7 @@ package zhang.algorithm.modelUtil.Exercise.Contest.LeetCode.Fourth;
  */
 public class question397_Integer_Replacement {
     /**
-     * why this method is wrong
+     * why this method is wrong!!!!
      * when input is 100_000_000
      * the reason is below.
      *
@@ -178,6 +178,7 @@ public class question397_Integer_Replacement {
             }
             cnt++;
         }
+
         return cnt;
     }
 

@@ -7,13 +7,14 @@ package zhang.algorithm.modelUtil.Search;
  * Time: 19:10
  * To change this template use File | Settings | File Templates.
  * This class is to realize special Search.
+ *
  */
 public class MaxMinSearch {
     public int min;
     public int max;
 
     /**
-     * use the Minimum comparison times to find the max and min number in the same time.
+     * Use the Minimum comparison times to find the max and min number in the same time.
      * the time complexity only O(3n/2)
      * <p>
      * How to code in a beautiful way.

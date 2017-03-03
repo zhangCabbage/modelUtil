@@ -6,6 +6,10 @@ package zhang.algorithm.modelUtil.BitManipultion;
  * Date: 16/7/14
  * Time: 上午10:17
  * To change this template use File | Settings | File Templates.
+ * <p>
+ * Review Time: 2017-03-02 11:43:24
+ * <p>
+ * 常见位操作
  */
 public class BitTool {
     /**
@@ -33,7 +37,7 @@ public class BitTool {
         int result = 0;
         while (num != 0) {
             result++;
-            num = num & (num - 1);
+            num &= (num - 1);
         }
         return result;
     }
@@ -50,35 +54,53 @@ public class BitTool {
      * this method reference the native way of java Int numberOfTrailingZeros
      * find the highest 1 bit in the binary num, no negative number
      * 求数二进制位数最高的位数, eg: 9 --> 1001, 返回3
+     * <p>
+     * The Java API: Integer.highestOneBit() is to return 2^highest
+     * eg:
+     * Integer.highestOneBit(9) = 8
+     * Integer.highestOneBit(12) = 8
      *
      * @param num
      * @return
      */
     public static int numOfHigh1Bit(int num) {
         num = Math.abs(num);
-        if (num < 2) return 0;
-        int temp, n = 0;
-        temp = num >> 16;
-        if (temp != 0) {
-            n += 16;
-            num = temp;
+        if (num == 0) return 0;
+
+        int tmp, bit = 1;
+        if ((tmp = num >> 16) != 0) {
+            bit += 16;
+            num = tmp;
         }
-        temp = num >> 8;
-        if (temp != 0) {
-            n += 8;
-            num = temp;
+        if ((tmp = num >> 8) != 0) {
+            bit += 8;
+            num = tmp;
         }
-        temp = num >> 4;
-        if (temp != 0) {
-            n += 4;
-            num = temp;
+        if ((tmp = num >> 4) != 0) {
+            bit += 4;
+            num = tmp;
         }
-        temp = num >> 2;
-        if (temp != 0) {
-            n += 2;
-            num = temp;
+        if ((tmp = num >> 2) != 0) {
+            bit += 2;
+            num = tmp;
         }
-        return n + (num >> 1);
+
+        return bit + (num >> 1);
+    }
+
+    /**
+     * The function of this function is same to Integer.highestOneBit()
+     *
+     * @param num
+     * @return
+     */
+    public static int numOfHighestOne(int num) {
+        int pre = 0;
+        while (num != 0) {
+            pre = num;
+            num &= (num - 1);
+        }
+        return pre;
     }
 
     /**
@@ -91,26 +113,22 @@ public class BitTool {
     public static int numOfTailZeros(int num) {
 //        Integer.numberOfTrailingZeros(num);
         if (num == 0) return 32;
-        int temp, n = 31;
-        temp = num << 16;
-        if (temp != 0) {
+        int tmp, n = 31;
+        if ((tmp = num << 16) != 0) {
             n -= 16;
-            num = temp;
+            num = tmp;
         }
-        temp = num << 8;
-        if (temp != 0) {
+        if ((tmp = num << 8) != 0) {
             n -= 8;
-            num = temp;
+            num = tmp;
         }
-        temp = num << 4;
-        if (temp != 0) {
+        if ((tmp = num << 4) != 0) {
             n -= 4;
-            num = temp;
+            num = tmp;
         }
-        temp = num << 2;
-        if (temp != 0) {
+        if ((tmp = num << 2) != 0) {
             n -= 2;
-            num = temp;
+            num = tmp;
         }
         return n - ((num << 1) >>> 31);
     }
