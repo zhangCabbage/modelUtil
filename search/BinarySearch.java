@@ -3,6 +3,8 @@ package zhang.algorithm.modelUtil.Search;
 /**
  * Created by zhang_zack on 16/5/29.
  * 用来表示快速查找
+ * <p>
+ * Review Time: 2017-03-01 20:26:29
  */
 public class BinarySearch {
     /**
