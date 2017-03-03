@@ -7,10 +7,12 @@ import zhang.algorithm.modelUtil.Array.ArrayTool;
  * 最好：比较 n-1 次，O(nlogn)
  * 最坏：比较 n(n-1)/2 次，O(n^2)
  * 平均：O(nlogn)
+ * <p>
+ * Review Time: 2017-03-01 10:15:52
  */
 public class FastSort {
     /**
-     * 快速排序算法
+     * 快速排序算法, 初版
      * 但是在这个实现过程中，我使用的判断太多了，当数据很大时，程序会被拖慢！！如何改进这个程序.
      *
      * @param nums
@@ -48,84 +50,81 @@ public class FastSort {
     }
 
     /**
-     * 快速排序算法的简单实现方法
+     * 快速排序算法, 改版
      *
      * @param nums
      * @param low
      * @param high
      */
     public static void fastSort2(int[] nums, int low, int high) {
+        if (low >= high) return;
+
         int l = low;
         int h = high;
-        int povitKey = nums[l];
+        int povit = nums[l];
         while (l < h) {
-            while (l < h && nums[h] >= povitKey) {
+            while (l < h && nums[h] >= povit) {
                 h--;
             }
             nums[l] = nums[h];
 
-            while (l < h && nums[l] <= povitKey) {
+            while (l < h && nums[l] <= povit) {
                 l++;
             }
             nums[h] = nums[l];
         }
-        nums[l] = povitKey;
+        nums[l] = povit;
 
-        if (l > low) {
-            fastSort(nums, low, l - 1);
-        }
-        if (h < high) {
-            fastSort(nums, h + 1, high);
-        }
+        fastSort2(nums, low, l - 1);
+        fastSort2(nums, h + 1, high);
     }
 
+//    /**
+//     * Error method !!
+//     * <p>
+//     * But this is wrong because of this mid index is not right.
+//     * so I make a test for this function
+//     * {1, 1, 1, 1, 4, 1, 2, 3, 6}
+//     * the result is {1, 1, 1, 1, 3, 1, 2, 4, 6}
+//     *
+//     * @param nums
+//     * @param low
+//     * @param high
+//     */
+//    public static void fastSort3(int[] nums, int low, int high) {
+//        if (high <= low) return;
+//
+//        int left = low;
+//        int right = high;
+//        int mid = (low + high) >> 1;
+//        int povitKey = nums[mid];
+//
+//        while (low < high) {
+//            while (nums[low] < povitKey) {
+//                low++;
+//            }
+//            while (nums[high] > povitKey) {
+//                high--;
+//            }
+//            if (low < high) {
+//                ArrayTool.swap(nums, low, high);
+//            }
+//            low++;
+//            high--;
+//        }
+//        fastSort3(nums, left, mid - 1);
+//        fastSort3(nums, mid + 1, right);
+//    }
+
     /**
-     * Error method !!
-     * <p>
-     * But this is wrong because of this mid index is not right.
-     * so I make a test for this function
-     * {1, 1, 1, 1, 4, 1, 2, 3, 6}
-     * the result is {1, 1, 1, 1, 3, 1, 2, 4, 6}
+     * Another implement of fast sort
+     * 代码组织更加紧凑, 简洁 --《算法导论》,推荐用法!
      *
      * @param nums
      * @param low
      * @param high
      */
     public static void fastSort3(int[] nums, int low, int high) {
-        if (high <= low) return;
-
-        int left = low;
-        int right = high;
-        int mid = (low + high) >> 1;
-        int povitKey = nums[mid];
-
-        while (low < high) {
-            while (nums[low] < povitKey) {
-                low++;
-            }
-            while (nums[high] > povitKey) {
-                high--;
-            }
-            if (low < high) {
-                ArrayTool.swap(nums, low, high);
-            }
-            low++;
-            high--;
-        }
-        fastSort3(nums, left, mid - 1);
-        fastSort3(nums, mid + 1, right);
-    }
-
-
-    /**
-     * another implement of fast sort
-     * 代码组织更加紧凑, 简洁 --《算法导论》
-     *
-     * @param nums
-     * @param low
-     * @param high
-     */
-    public static void fastSort4(int[] nums, int low, int high) {
         if (low < high) {
             int povit = nums[high];  //这里主元的选择是提高此算法的关键
             int i = low - 1;
@@ -135,8 +134,8 @@ public class FastSort {
                 }
             }
             ArrayTool.swap(nums, ++i, high);
-            fastSort4(nums, low, i - 1);
-            fastSort4(nums, i + 1, high);
+            fastSort3(nums, low, i - 1);
+            fastSort3(nums, i + 1, high);
         }
     }
 
