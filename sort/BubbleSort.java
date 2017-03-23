@@ -52,5 +52,6 @@ public class BubbleSort {
         int[] nums = {3, 2};
         bubbleSort(nums);
         ArrayTool.printArray(nums);
+
     }
 }
