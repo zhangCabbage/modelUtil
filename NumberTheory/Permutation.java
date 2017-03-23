@@ -12,6 +12,7 @@ import java.util.Map;
  * 参见：<br/>
  * [【字符串全排列算法】](http://blog.csdn.net/wzy_1988/article/details/8939140) <br/>
  * [【STL系列之十 全排列(百度迅雷笔试题)】](http://blog.csdn.net/morewindows/article/details/7370155)  给出了非递归的全排列方法 <br/>
+ * 下面这个解释ok !!
  * [【全排列和全组合实现】](http://wuchong.me/blog/2014/07/28/permutation-and-combination-realize/) 这里总结了关于组合的求法！<br/>
  *
  * @author zhang_zack
@@ -109,14 +110,12 @@ public class Permutation {
      * @return
      */
     public boolean isSwap(char[] c, int start, int cur) {
-        boolean flag = true;
         for (int i = start; i < cur; i++) {
             if (c[i] == c[cur]) {
-                flag = false;
-                break;
+                return false;
             }
         }
-        return flag;
+        return true;
     }
 
 //--------------------------------------------------------------------------------------------------------------------
@@ -208,6 +207,7 @@ public class Permutation {
                 return true;
             }
         }
+
         reverse(c, swapIndex - 1, c.length - 1);
         return false;
     }

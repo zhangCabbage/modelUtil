@@ -5,6 +5,9 @@ package zhang.algorithm.modelUtil.String;
  *
  * @author DELL
  * @since 16/5/5
+ * <p>
+ * Review Time: 2017-03-08 15:12:36
+ * 注意: 算next数组时, 判断条件为while (cur < next.length - 1)
  */
 public class KMP {
     private int[] next;//next数组

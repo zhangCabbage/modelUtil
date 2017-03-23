@@ -83,7 +83,7 @@ public class CountOne {
 		System.out.println(test.countOne2(num));
 		long end2 = System.currentTimeMillis();
 		System.out.println("方法2耗时--->"+(end2-start2)+"ms");
-		
+
 //		结果为：
 //		1799875962700000000
 //		方法1耗时--->14ms

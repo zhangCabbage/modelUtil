@@ -80,7 +80,7 @@ public class MathOperation {
 
     public static void main(String[] args) {
 //        System.out.println(fastPow(3, 5));
-        System.out.println(fastMultiMod(3, 0, 7));
-        System.out.println(fastPowMod(3, 3, 7));
+//        System.out.println(fastMultiMod(3, 0, 7));
+//        System.out.println(fastPowMod(3, 3, 7));
     }
 }
