@@ -9,7 +9,7 @@ package zhang.algorithm.modelUtil.NumberTheory;
  * <p>
  * 加减乘除的实现
  */
-public class MathOperation {
+public class MathTools {
 
     /**
      * fast calculate the pow of a and b, result is a^b.

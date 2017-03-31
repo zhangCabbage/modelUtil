@@ -1,4 +1,4 @@
-package zhang.algorithm.modelUtil.Exercise.Examination;
+package zhang.algorithm.modelUtil.Exercise.Examination.Alibaba;
 
 import java.util.HashMap;
 import java.util.Map;

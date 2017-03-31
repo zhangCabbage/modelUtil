@@ -113,10 +113,10 @@ public class PrimeNumber {
             j++;
         }
 
-        long x = MathOperation.fastPowMod(a, r, n);
+        long x = MathTools.fastPowMod(a, r, n);
         if (x == 1 || x == n - 1) return true;//满足①or②。
         for (int i = 1; i < j; i++) {
-            x = MathOperation.fastMultiMod(x, 2, n);
+            x = MathTools.fastMultiMod(x, 2, n);
             if (x == n - 1) return true;//满足②
         }
         return false;
