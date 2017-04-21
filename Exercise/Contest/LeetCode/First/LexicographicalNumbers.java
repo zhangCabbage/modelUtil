@@ -1,6 +1,10 @@
 package zhang.algorithm.modelUtil.Exercise.Contest.LeetCode.First;
 
+import zhang.algorithm.modelUtil.NumberTheory.MathTools;
+
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -83,8 +87,100 @@ public class LexicographicalNumbers {
         return res;
     }
 
+    /**
+     * when input 49999 -> Time Limit Exceeded
+     *
+     * @param n
+     * @return
+     */
+    public List<Integer> lexicalOrder3(int n) {
+        List<Integer> res = new ArrayList<>(n);
+        for (int i = 0; i < n; i++) {
+            res.add(i + 1);
+        }
+        Collections.sort(res, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                String num1 = o1.toString();
+                String num2 = o2.toString();
+                int i = 0, j = 0;
+                while (i < num1.length() && j < num2.length()) {
+                    char x = num1.charAt(i++);
+                    char y = num2.charAt(j++);
+                    if (x < y) return -1;
+                    else if (x > y) return 1;
+                }
+                if (i < num1.length()) return 1;
+                if (j < num2.length()) return -1;
+                return 0;
+            }
+        });
+        return res;
+    }
+
+    /**
+     * 最初以为是string拖慢了处理速度, 改进之后发现仍然Time Limit Exceeded
+     *
+     * @param n
+     * @return
+     */
+    public List<Integer> lexicalOrder4(int n) {
+        List<Integer> res = new ArrayList<>(n);
+        for (int i = 0; i < n; i++) {
+            res.add(i + 1);
+        }
+        Collections.sort(res, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                int num1 = MathTools.reverseInt(o1);
+                int num2 = MathTools.reverseInt(o2);
+                if (num1 == num2) return o1.intValue() - o2.intValue();
+
+                while (num1 != 0 && num2 != 0) {
+                    int i = num1 % 10;
+                    int j = num2 % 10;
+                    if (i < j) return -1;
+                    else if (i > j) return 1;
+
+                    num1 /= 10;
+                    num2 /= 10;
+                }
+                return num1 == 0 ? -1 : 1;
+            }
+        });
+        return res;
+    }
+
+    /**
+     * Review Time: 2017-04-21 16:16:17
+     * 相比第一次做的结果这次思路更加清晰, 代码更加简洁。
+     * 注意: 192的情况下, 19, 190, 191, 192, 2, 20
+     * 26 / 26 test cases passed.
+     * Status: Accepted
+     * Runtime: 143 ms, 94.86%
+     *
+     * @param n
+     * @return
+     */
+    public List<Integer> lexicalOrder5(int n) {
+        List<Integer> res = new ArrayList<>(n);
+        int cur = 1;
+        for (int i = 0; i < n; i++) {
+            res.add(cur);
+            if (cur * 10 <= n) cur *= 10;
+            else {
+                while (cur >= n || cur % 10 == 9) cur /= 10;  //here attention please
+                cur++;
+            }
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
         LexicographicalNumbers test = new LexicographicalNumbers();
-        System.out.println(test.lexicalOrder2(123));
+//        System.out.println(test.lexicalOrder2(123));
+//        System.out.println(test.lexicalOrder3(123));
+        System.out.println(test.lexicalOrder4(192));
+        System.out.println(test.lexicalOrder5(192));
     }
 }

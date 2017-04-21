@@ -78,9 +78,28 @@ public class MathTools {
         return ans;
     }
 
+    /**
+     * 特殊情况:
+     * 1) 超界问题, return 0
+     * 2) 50/500 -> 5
+     *
+     * @param num
+     * @return
+     */
+    public static int reverseInt(int num) {
+        long res = 0;
+        while (num != 0) {
+            res = res * 10 + num % 10;
+            if (res > Integer.MAX_VALUE || res < Integer.MIN_VALUE) return 0;
+            num /= 10;
+        }
+        return (int) res;
+    }
+
     public static void main(String[] args) {
 //        System.out.println(fastPow(3, 5));
 //        System.out.println(fastMultiMod(3, 0, 7));
 //        System.out.println(fastPowMod(3, 3, 7));
+        System.out.println(reverseInt(-10));
     }
 }
