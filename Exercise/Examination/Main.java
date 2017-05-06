@@ -1,7 +1,5 @@
 package zhang.algorithm.modelUtil.Exercise.Examination;
 
-import java.util.*;
-
 /**
  * Created by IntelliJ IDEA.
  * User: jiahua_MacPro
@@ -11,19 +9,11 @@ import java.util.*;
  */
 public class Main {
     /**
-     * @param in
-     */
-    public static void test1(Scanner in) {
-
-    }
-
-    /**
-     * 尽量不用 in.hasNext() 大循环
-     *
      * @param args
      */
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-//        test1(in);
+        
     }
 }
+
+

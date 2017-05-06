@@ -103,9 +103,6 @@ public class Spring4_22 {
     }
 
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        while (in.hasNext()) {
-            fun2(in);
-        }
+        
     }
 }

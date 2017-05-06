@@ -11,7 +11,8 @@ import java.util.Scanner;
  * To change this template use File | Settings | File Templates.
  */
 public class Main {
-    public static void main(String[] args) {
+
+    public static void fun() {
         Scanner in = new Scanner(System.in);
 
         while (in.hasNext()) {
@@ -79,6 +80,19 @@ public class Main {
                 }
                 System.out.println();
             }
+        }
+    }
+
+    public static void test2() {
+
+    }
+
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        while (in.hasNext()) {
+
         }
 
     }
