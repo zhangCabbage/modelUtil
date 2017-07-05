@@ -2,6 +2,8 @@ package zhang.algorithm.modelUtil.Sort;
 
 import zhang.algorithm.modelUtil.Array.ArrayTool;
 
+import java.util.Arrays;
+
 /**
  * 时间复杂度分析：
  * 最好：比较 n-1 次，O(nlogn)
@@ -164,12 +166,13 @@ public class FastSort {
     }
 
     public static void main(String[] args) {
-        int[] nums = {5, 7, 9, 8, 4, 1, 2, 3, 6};
+        int[] nums = {2, 1};
 //        fastSort(nums, 0, nums.length - 1);
-//        fastSort2(nums, 0, nums.length - 1);
+        fastSort2(nums, 0, nums.length - 1);
+        System.out.println(Arrays.toString(nums));
 //        fastSort3(nums, 0, nums.length - 1);
 
-        System.out.println(partitation(nums, 0, nums.length - 1));
-        ArrayTool.printArray(nums);
+//        System.out.println(partitation(nums, 0, nums.length - 1));
+//        ArrayTool.printArray(nums);
     }
 }
