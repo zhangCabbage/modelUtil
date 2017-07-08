@@ -12,30 +12,10 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) {
-        System.out.println();
-        StringBuffer sb = new StringBuffer();
-        sb.append("Hello World");
-
-        System.out.println(Integer.toBinaryString(-3));
-        System.out.println(Power(2, -3));
-
+        Main main = new Main();
+        int[] nums = {1, 2, 3, 4, 5, 0};
 
     }
-
-    public static double Power(double base, int exponent) {
-        //方法一
-        //return Math.pow(base, exponent);
-        int n = Math.abs(exponent);
-        double res = 1;
-        while (n != 0) {
-            if ((n & 1) == 1)
-                res *= base;
-            base *= base;
-            n >>>= 1;
-        }
-        return exponent < 0 ? 1 / res : res;
-    }
-
 }
 
 
