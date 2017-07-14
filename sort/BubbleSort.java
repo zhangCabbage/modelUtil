@@ -21,19 +21,6 @@ public class BubbleSort {
      * @param nums
      */
     public static void bubbleSort(int[] nums) {
-        for (int i = 1; i < nums.length; i++) {
-            boolean flag = false;
-            for (int j = 0; j < nums.length - i; j++) {
-                if (nums[j] > nums[j + 1]) {
-                    flag = true;
-                    ArrayTool.swap(nums, j, j + 1);
-                }
-            }
-            if (flag == false) {
-                break;
-            }
-        }
-
         //第二次写, 上面的代码更简洁流畅
 //        for (int i = 0; i < nums.length - 1; i++) {
 //            boolean flag = false;
@@ -46,10 +33,21 @@ public class BubbleSort {
 //            if (!flag) break;
 //        }
 
+        for (int i = 0; i < nums.length - 1; i++) {
+            //至少需要两个才能进行比较
+            boolean flag = true;
+            for (int j = nums.length - 1; j > i; j--) {
+                if (nums[j] < nums[j - 1]) {  //这里可以进行替换
+                    ArrayTool.swap(nums, j - 1, j);
+                    flag = false;
+                }
+            }
+            if (flag) break;
+        }
     }
 
     public static void main(String[] args) {
-        int[] nums = {3, 2};
+        int[] nums = {3, 2, 4};
         bubbleSort(nums);
         ArrayTool.printArray(nums);
 
