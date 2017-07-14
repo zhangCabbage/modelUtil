@@ -1,5 +1,7 @@
 package zhang.algorithm.modelUtil.Exercise.Examination;
 
+import java.util.Scanner;
+
 /**
  * Created by IntelliJ IDEA.
  * User: jiahua_MacPro
@@ -8,13 +10,21 @@ package zhang.algorithm.modelUtil.Exercise.Examination;
  * To change this template use File | Settings | File Templates.
  */
 public class Main {
+
+    public static void test1(Scanner in) {
+        
+    }
+
     /**
+     * 专门用来笔试的类
+     *
      * @param args
      */
     public static void main(String[] args) {
-        Main main = new Main();
-        int[] nums = {1, 2, 3, 4, 5, 0};
-
+        Scanner in = new Scanner(System.in);
+        while (in.hasNext()) {
+            test1(in);
+        }
     }
 }
 

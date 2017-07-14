@@ -46,6 +46,27 @@ public class LinkedListTools {
         return head;
     }
 
+    /**
+     * 重排链表, 使得奇数位节点在前, 偶数位节点在后
+     *
+     * @param head
+     * @return
+     */
+    public static ListNode oddEvenList(ListNode head) {
+        if (head != null) {
+            ListNode odd = head;
+            ListNode even = head.next, evenHead = even;
+            while (even != null && even.next != null) {
+                odd.next = odd.next.next;
+                even.next = even.next.next;
+                odd = odd.next;
+                even = even.next;
+            }
+            odd.next = evenHead;
+        }
+        return head;
+    }
+
     public static void main(String[] args) {
         int[] array = {1, 2, 3, 4};
         ListNode head = factory(array);

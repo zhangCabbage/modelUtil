@@ -62,6 +62,27 @@ public class ArrayTool {
         return sum;
     }
 
+    /**
+     * 重排序数组, 使得奇数在前, 偶数在后
+     * 如果要求不使用额外的空间, 可以使用类似冒泡排序的思想
+     * <p>
+     * 但是如果是奇数位和偶数位的重排序, 就没法用冒泡排序的方式
+     *
+     * @param nums
+     */
+    public static void reorder(int[] nums) {
+        for (int i = 0; i < nums.length - 1; i++) {
+            boolean flag = true; //未换序
+            for (int j = nums.length - 1; j > i; j--) {
+                if ((nums[j] & 1) == 1 && (nums[j - 1] & 1) == 0) {
+                    swap(nums, j, j - 1);
+                    flag = false;
+                }
+            }
+            if (flag) return;
+        }
+    }
+
 
     //--------------------------------------------------------------
     //2\ transform
@@ -189,8 +210,9 @@ public class ArrayTool {
 
 
     public static void main(String[] args) {
-        int[] nums = {1, 2, 3, 4};
-        System.out.println(intToList(nums, 2, 3, false));
+        int[] nums = {1, 2, 3};
+        reorder(nums);
+        System.out.println(Arrays.toString(nums));
     }
 
 }
