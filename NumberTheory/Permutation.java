@@ -212,6 +212,23 @@ public class Permutation {
         return false;
     }
 
+    public boolean nextPermutation(char[] c) {
+        int x = c.length;
+        while (x > 1) { //只有需要排序的字符串长度大于或等于2, 才可以
+            x--;
+            if (c[x - 1] < c[x]) {
+                int y = c.length - 1;
+                while (c[y] <= c[x - 1]) y--;
+                swap(c, x - 1, y);
+                reverse(c, x, c.length - 1);
+                return true;
+            }
+
+        }
+
+        return false;
+    }
+
     public void reverse(char[] c, int start, int end) {
         int len = end - start + 1;
         for (int i = 0; i < len / 2; i++) {

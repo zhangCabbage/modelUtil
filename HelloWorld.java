@@ -13,6 +13,8 @@ public class HelloWorld {
         StringBuilder sb = new StringBuilder();
         sb.append("zhang");
         sb.append("gao");
-        System.out.println(sb.length());
+
+        HelloWorld test = new HelloWorld();
+
     }
 }

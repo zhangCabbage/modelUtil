@@ -25,6 +25,12 @@ public class ArrayTool {
         nums[n] = temp;
     }
 
+    public static void swap(char[] nums, int m, int n) {
+        char temp = nums[m];
+        nums[m] = nums[n];
+        nums[n] = temp;
+    }
+
     /**
      * 倒置一个数组起始下标为start，到结束下标为end期间的数
      *
@@ -33,6 +39,13 @@ public class ArrayTool {
      * @param end
      */
     public static void reverse(int[] array, int start, int end) {
+        int i = start, j = end;
+        while (i < j) {
+            swap(array, i++, j--);
+        }
+    }
+
+    public static void reverse(char[] array, int start, int end) {
         int i = start, j = end;
         while (i < j) {
             swap(array, i++, j--);
