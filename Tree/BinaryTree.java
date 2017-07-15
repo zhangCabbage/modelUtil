@@ -110,6 +110,7 @@ public class BinaryTree {
     @Override
     public String toString() {
         depth = this.getDepth();
+        if (depth == 0) return "NULL";
         StringBuffer[] sb = new StringBuffer[depth];
         for (int i = 0; i < depth; i++) {
             sb[i] = new StringBuffer();

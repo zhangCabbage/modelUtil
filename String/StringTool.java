@@ -20,7 +20,7 @@ public class StringTool {
         int result = 0;
         if (first == '-') {
             flag = -1;
-        }else if (first != '+') {
+        } else if (first != '+') {
             result = first - '0';
         }
 
@@ -28,5 +28,18 @@ public class StringTool {
             result = result * 10 + (str.charAt(i) - '0');
         }
         return flag * result;
+    }
+
+    /**
+     * 判断一个str字符串是否为一个数字
+     *
+     * @return
+     */
+    public static boolean isNumeric(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            if (!Character.isDigit(c)) return false;
+        }
+        return true;
     }
 }

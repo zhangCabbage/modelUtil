@@ -96,6 +96,30 @@ public class MathTools {
         return (int) res;
     }
 
+
+    /**
+     * @param x
+     * @return
+     */
+    public static int sumBitNum(int x) {
+        x = Math.abs(x);
+        int sum = 0;
+        while (x != 0) {
+            sum += x % 10;
+            x /= 10;
+        }
+        return sum;
+    }
+
+    public static int sumBitNums(int... nums) {
+        int sum = 0;
+        for (int i = 0; i < nums.length; i++) {
+            sum += sumBitNum(nums[i]);
+        }
+
+        return sum;
+    }
+
     public static void main(String[] args) {
 //        System.out.println(fastPow(3, 5));
 //        System.out.println(fastMultiMod(3, 0, 7));
