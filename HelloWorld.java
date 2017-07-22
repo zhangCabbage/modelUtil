@@ -9,12 +9,30 @@ package zhang.algorithm.modelUtil;
  */
 public class HelloWorld {
 
-    public static void main(String[] args) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("zhang");
-        sb.append("gao");
+    public static void main(String[] args) throws InterruptedException {
+        char[] c = "aab".toCharArray();
+        System.out.println(String.valueOf(c, 1, 2));
 
         HelloWorld test = new HelloWorld();
 
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    System.out.println("start...");
+                    Thread.sleep(3000);
+                    System.out.println("...thread over.");
+                } catch (InterruptedException e) {
+                    System.out.println("Be interrupt!");
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
+        Thread.sleep(1000);
+        thread.interrupt();
+
+        Object
     }
 }
