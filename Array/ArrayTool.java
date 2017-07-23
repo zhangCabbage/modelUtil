@@ -150,6 +150,20 @@ public class ArrayTool {
         return c;
     }
 
+    /**
+     * string[] to int[]
+     *
+     * @param strs
+     * @return
+     */
+    public static int[] string2Int(String[] strs) {
+        if (strs == null || strs.length == 0) return null;
+        int[] nums = new int[strs.length];
+        for (int i = 0; i < nums.length; i++)
+            nums[i] = Integer.parseInt(strs[i]);
+        return nums;
+    }
+
 
     //--------------------------------------------------------------
     //3\ print

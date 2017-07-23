@@ -120,6 +120,32 @@ public class MathTools {
         return sum;
     }
 
+    /**
+     * 实现一个解析字符串表达式的函数, 其中只有+、-、*、\/四则运算, 并对除法进行截断取整
+     * 参见: 227 Basic Calculator II
+     *
+     * @param str
+     * @return
+     */
+    public int calculate(String str) {
+
+        return 0;
+    }
+
+    /**
+     * 比较first和second两个整数
+     * if first < second, return -1
+     * if first > second, return 1
+     * if first = second, return 0
+     *
+     * @param first
+     * @param second
+     * @return
+     */
+    public static int intCompare(int first, int second) {
+        return first < second ? -1 : (first > second ? 1 : 0);
+    }
+
     public static void main(String[] args) {
 //        System.out.println(fastPow(3, 5));
 //        System.out.println(fastMultiMod(3, 0, 7));

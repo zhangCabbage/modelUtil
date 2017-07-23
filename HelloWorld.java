@@ -1,5 +1,8 @@
 package zhang.algorithm.modelUtil;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by IntelliJ IDEA.
  * User: jiahua_MacPro
@@ -14,25 +17,30 @@ public class HelloWorld {
         System.out.println(String.valueOf(c, 1, 2));
 
         HelloWorld test = new HelloWorld();
-
-
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    System.out.println("start...");
-                    Thread.sleep(3000);
-                    System.out.println("...thread over.");
-                } catch (InterruptedException e) {
-                    System.out.println("Be interrupt!");
-                    e.printStackTrace();
-                }
-            }
-        });
-        thread.start();
-        Thread.sleep(1000);
-        thread.interrupt();
-
-        Object
+        System.out.println(test.generateParenthesis(0));
     }
+
+    private List<String> res = null;
+
+    public List<String> generateParenthesis(int n) {
+        res = new ArrayList<>();
+        generateParenthesis("", n, n);
+
+        return res;
+    }
+
+    /**
+     * left、right表示剩下的左右括号数
+     *
+     * @param left
+     * @param right
+     */
+    private void generateParenthesis(String str, int left, int right) {
+        if (left <= right) {
+            if (left == 0 && right == 0) res.add(str);
+            if (left > 0) generateParenthesis(str + "(", left - 1, right);
+            if (right > 0) generateParenthesis(str + ")", left, right - 1);
+        }
+    }
+
 }
