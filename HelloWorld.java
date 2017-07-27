@@ -1,14 +1,33 @@
 package zhang.algorithm.modelUtil;
 
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.CyclicBarrier;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-
+import java.util.*;
 
 /**
+ * 常见提示：
+ * 26个字母的素数：
+ * 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
  * Created by IntelliJ IDEA.
  * User: jiahua_MacPro
  * Date: 17/7/14
@@ -22,15 +41,26 @@ public class HelloWorld {
         System.out.println(String.valueOf(c, 1, 2));
 
         HelloWorld test = new HelloWorld();
-        int[] nums = {3,0,1,0};
+        String nums = "9";
         int k = 1;
-        StringBuilder sb = new StringBuilder();
-        sb.append(1);
-        sb.append(2);
-        sb.append(3);
-        sb.append(4);
-        sb.insert(3, 0);
-        System.out.println(sb);
+        System.out.println(test.removeKdigits(nums, k));
     }
 
+    public String removeKdigits(String num, int k) {
+        char[] c = new char[num.length()];
+        int i = -1;
+        int cnt = 0;
+        for (char x : num.toCharArray()) {
+            if (i != -1 && x < c[i] && cnt < k) {
+                while (i != -1 && x < c[i] && cnt < k) {
+                    cnt++;
+                    i--;
+                }
+            }
+            c[++i] = x;
+        }
+        int start = k - cnt;
+        while (start < i && c[start] == '0') start++;
+        return start > i ? "0" : String.valueOf(c, start, i - start + 1);
+    }
 }
