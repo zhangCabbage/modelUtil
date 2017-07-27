@@ -1,7 +1,12 @@
 package zhang.algorithm.modelUtil;
 
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+
 
 /**
  * Created by IntelliJ IDEA.
@@ -17,30 +22,15 @@ public class HelloWorld {
         System.out.println(String.valueOf(c, 1, 2));
 
         HelloWorld test = new HelloWorld();
-        System.out.println(test.generateParenthesis(0));
-    }
-
-    private List<String> res = null;
-
-    public List<String> generateParenthesis(int n) {
-        res = new ArrayList<>();
-        generateParenthesis("", n, n);
-
-        return res;
-    }
-
-    /**
-     * left、right表示剩下的左右括号数
-     *
-     * @param left
-     * @param right
-     */
-    private void generateParenthesis(String str, int left, int right) {
-        if (left <= right) {
-            if (left == 0 && right == 0) res.add(str);
-            if (left > 0) generateParenthesis(str + "(", left - 1, right);
-            if (right > 0) generateParenthesis(str + ")", left, right - 1);
-        }
+        int[] nums = {3,0,1,0};
+        int k = 1;
+        StringBuilder sb = new StringBuilder();
+        sb.append(1);
+        sb.append(2);
+        sb.append(3);
+        sb.append(4);
+        sb.insert(3, 0);
+        System.out.println(sb);
     }
 
 }
