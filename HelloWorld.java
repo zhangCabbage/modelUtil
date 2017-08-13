@@ -1,7 +1,7 @@
 package zhang.algorithm.modelUtil;
 
 
-
+import java.util.TreeMap;
 
 /**
  * 常见提示：
@@ -27,17 +27,16 @@ package zhang.algorithm.modelUtil;
 public class HelloWorld {
 
     public static void main(String[] args) {
-        System.out.println();
+        HelloWorld test = new HelloWorld();
+        String str1 = "abcbdab";
+        String str2 = "bdcaba";
+        TreeMap<Integer, Object> map = new TreeMap();
+        map.put(12, null);
+        System.out.println(map);
+
+        System.out.println(str1.substring(str1.length(), str1.length()));
 
 
     }
 
-
-    public static class A{
-        public int a = 0;
-    }
-
-    public static class B extends A{
-        public int a = 1;
-    }
 }
