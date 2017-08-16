@@ -1,6 +1,6 @@
 package zhang.algorithm.modelUtil.Exercise.Examination;
 
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -12,12 +12,10 @@ import java.util.Scanner;
 public class Main {
 
     public static void test1(Scanner in) {
-        
+
     }
 
     /**
-     * 专门用来笔试的类
-     *
      * @param args
      */
     public static void main(String[] args) {
