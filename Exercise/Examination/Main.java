@@ -11,6 +11,9 @@ import java.util.*;
  */
 public class Main {
 
+    /**
+     * @param in
+     */
     public static void test1(Scanner in) {
 
     }
