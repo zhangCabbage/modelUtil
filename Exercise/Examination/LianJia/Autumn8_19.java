@@ -1,6 +1,7 @@
 package zhang.algorithm.modelUtil.Exercise.Examination.LianJia;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Scanner;
 
 /**
@@ -47,6 +48,9 @@ public class Autumn8_19 {
 
     /**
      * 题意好像没有看懂哎
+     * <p>
+     * 后来读懂了，2016网易笔试题（奖学金）一样的一道题
+     * 使用贪心算法并不难
      *
      * @param cin
      */
@@ -55,16 +59,34 @@ public class Autumn8_19 {
         int r = cin.nextInt();
         int avg = cin.nextInt();
 
-        int[] a = new int[n];
-        int[] b = new int[n];
+        int[][] a = new int[n][2];
         int diff = avg * n;
+
         for (int i = 0; i < n; i++) {
-            a[i] = cin.nextInt();
-            diff -= a[i];
-            b[i] = cin.nextInt();
+            a[i][0] = cin.nextInt();
+            diff -= a[i][0];
+            a[i][1] = cin.nextInt();
         }
 
-        System.out.println(diff);
+        Arrays.sort(a, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] x, int[] y) {
+                return x[1] - y[1];
+            }
+        });
+        int i = 0, j = 0; // i表示努力得来的分数， j表示a[x][1]的下标
+        int cnt = 0;
+        while (i < diff) {
+            while (i < diff && a[j][0] < r) {
+                int tmp = Math.min(diff - i, r - a[j][0]);
+                a[j][0] += tmp;
+                i += tmp;
+                cnt += a[j][1] * tmp;
+            }
+            j++;
+        }
+
+        System.out.println(cnt);
     }
 
     //===================================================================================
@@ -166,7 +188,7 @@ public class Autumn8_19 {
     public static void main(String[] args) {
         Scanner cin = new Scanner(System.in);
         while (cin.hasNextInt()) {
-            test3(cin);
+            test2(cin);
         }
     }
 }

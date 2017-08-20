@@ -1,7 +1,6 @@
 package zhang.algorithm.modelUtil;
 
 
-
 import java.util.TreeMap;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
@@ -41,6 +40,5 @@ public class HelloWorld {
 
         System.out.println();
 
-        new ArrayBlockingQueue(12)
     }
 }
