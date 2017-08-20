@@ -1,7 +1,12 @@
 package zhang.algorithm.modelUtil;
 
 
+
 import java.util.TreeMap;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * 常见提示：
@@ -34,9 +39,8 @@ public class HelloWorld {
         map.put(12, null);
         System.out.println(map);
 
-        System.out.println(str1.substring(str1.length(), str1.length()));
+        System.out.println();
 
-
+        new ArrayBlockingQueue(12)
     }
-
 }

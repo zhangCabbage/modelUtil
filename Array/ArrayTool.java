@@ -235,6 +235,26 @@ public class ArrayTool {
         System.out.println("-----matrix end-----");
     }
 
+    /**
+     * 自己实现join操作
+     *
+     * @return
+     */
+    public static String join(Object[] array, String separator) {
+        return join(array, separator, 0, array.length - 1);
+    }
+
+    public static String join(Object[] array, String separator, int start, int end) {
+        if (array == null || start > end || end >= array.length) return null;
+        StringBuilder sb = new StringBuilder();
+        for (int i = start; i <= end; i++) {
+            if (i > start)
+                sb.append(separator);
+            sb.append(array[i]);
+        }
+        return sb.toString();
+    }
+
 
     public static void main(String[] args) {
         int[] nums = {1, 2, 3};
