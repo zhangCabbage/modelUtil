@@ -1,11 +1,6 @@
 package zhang.algorithm.modelUtil;
 
 
-import java.util.TreeMap;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * 常见提示：
@@ -31,13 +26,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 public class HelloWorld {
 
     public static void main(String[] args) {
-        HelloWorld test = new HelloWorld();
-        String str1 = "abcbdab";
-        String str2 = "bdcaba";
-        TreeMap<Integer, Object> map = new TreeMap();
-        map.put(12, null);
-        System.out.println(map);
-
-        System.out.println();
+        String str = "3a{2{c}}";
     }
+
 }
