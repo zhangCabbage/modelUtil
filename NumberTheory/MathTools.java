@@ -146,10 +146,41 @@ public class MathTools {
         return first < second ? -1 : (first > second ? 1 : 0);
     }
 
+    /**
+     * 十进制数字num有多少位
+     * 0 - 9  ->  1
+     * 10- 99 ->  2
+     *
+     * @param num
+     * @return
+     */
+    public static int decimalBit(int num) {
+        if (num == Integer.MIN_VALUE || num == Integer.MAX_VALUE) return 10;
+        long n = Math.abs(num);
+        if (n < 10) return 1;
+
+        int l = 1, r = 10;
+
+        while (l <= r) {
+            int mid = l + (r - l >> 1);
+            if (judgeBit(n, mid)) return mid;
+            else if (n < Math.pow(10, mid - 1)) r = mid - 1;
+            else l = mid + 1;
+        }
+        return l;
+    }
+
+    private static boolean judgeBit(long n, int x) {
+        long tmp = (long) Math.pow(10, x - 1);
+        if (n >= tmp && n / tmp < 10) return true;
+        return false;
+    }
+
     public static void main(String[] args) {
 //        System.out.println(fastPow(3, 5));
 //        System.out.println(fastMultiMod(3, 0, 7));
 //        System.out.println(fastPowMod(3, 3, 7));
-        System.out.println(reverseInt(-10));
+//        System.out.println(reverseInt(-10));
+        System.out.println(decimalBit(-2147483647));
     }
 }

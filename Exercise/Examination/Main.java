@@ -1,5 +1,6 @@
 package zhang.algorithm.modelUtil.Exercise.Examination;
 
+
 import java.util.*;
 
 /**
@@ -10,12 +11,14 @@ import java.util.*;
  * To change this template use File | Settings | File Templates.
  */
 public class Main {
+
     /**
      * @param in
      */
     public static void test1(Scanner in) {
 
     }
+
 
     /**
      * @param args
