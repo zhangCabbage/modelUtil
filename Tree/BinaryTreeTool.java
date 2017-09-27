@@ -1,6 +1,9 @@
 package zhang.algorithm.modelUtil.Tree;
 
+import sun.reflect.generics.tree.Tree;
 import zhang.algorithm.modelUtil.String.StringTool;
+
+import java.util.Stack;
 
 /**
  * Created by IntelliJ IDEA.
@@ -108,7 +111,30 @@ public class BinaryTreeTool {
 
     //---------------------------------------------------------------------------------------------------------
     //---------------------------------------------------------------------------------------------------------
+    public static TreeNode mirror1(TreeNode root){
+        if(root == null) return root;
+        TreeNode tmp = root.left;
+        root.left = root.right;
+        root.right = tmp;
+        mirror1(root.left);
+        mirror1(root.right);
+        return root;
+    }
 
+    public static TreeNode mirror2(TreeNode root){
+        if(root == null) return root;
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while(!stack.isEmpty()){
+            TreeNode cur = stack.pop();
+            TreeNode tmp = cur.left;
+            cur.left = cur.right;
+            cur.right = tmp;
+            if(cur.left != null) stack.push(cur.left);
+            if(cur.right != null) stack.push(cur.right);
+        }
+        return root;
+    }
 
     //---------------------------------------------------------------------------------------------------------
     //---------------------------------------------------------------------------------------------------------
