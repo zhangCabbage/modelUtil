@@ -2,6 +2,7 @@ package zhang.algorithm.modelUtil.Sort;
 
 import zhang.algorithm.modelUtil.Array.ArrayTool;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
@@ -65,14 +66,10 @@ public class FastSort {
         int h = high;
         int povit = nums[l];
         while (l < h) {
-            while (l < h && nums[h] >= povit) {
-                h--;
-            }
+            while (l < h && nums[h] >= povit) h--;
             nums[l] = nums[h];
 
-            while (l < h && nums[l] <= povit) {
-                l++;
-            }
+            while (l < h && nums[l] <= povit) l++;
             nums[h] = nums[l];
         }
         nums[l] = povit;
@@ -121,6 +118,10 @@ public class FastSort {
     /**
      * Another implement of fast sort
      * 代码组织更加紧凑, 简洁 --《算法导论》,推荐用法!
+     * <p>
+     * 注意：
+     * 1）类似[前后标记法], 这里只是对小于主元povit的下标进行标记
+     * 2）主元为high
      *
      * @param nums
      * @param low
